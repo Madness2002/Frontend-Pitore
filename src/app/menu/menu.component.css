@@ -1,0 +1,70 @@
+#logo{
+  width: 59px;
+  height: 70px;
+  background-image: url("~src/img/logo.png");
+margin-right: 20px;
+}
+.bg-body-tertiary{
+  background-color: transparent !important;
+}
+#logo_nombre{
+
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  vertical-align: center;
+}
+#nombre{
+  margin: 0px;
+  vertical-align: center;
+  align-self: center;
+  color: #3D3838;
+  text-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  font-family: Jacques Francois;
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+#navbarNav{
+  justify-content: end;
+}
+.btn-primary{
+  border-radius: 20px;
+  border: 1px solid #0097A2;
+  background: #F6F9FC;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  color: #0097A2;
+  font-family: Inter;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+#saber_mas_iniciar_sesion{
+
+  width: 50%;
+  justify-content: space-around;
+}
+@media (max-width: 990px) {
+  .btn-primary{
+width: 100%;
+    border-radius: 0px;
+    border: 0px solid #0097A2;
+    box-shadow: none;
+  }
+  #navbarNav{
+
+    justify-content: center;
+  }
+
+  #saber_mas_iniciar_sesion{
+
+    width: 100%;
+    justify-content: center;
+  }
+  #saber_mas_iniciar_sesion li{
+    display: flex;
+    justify-content: center;
+  }
+}
