@@ -90,3 +90,133 @@ padding-left: 20px;
   align-items: end;
 z-index: -1;
 }
+
+#tercera_fila{
+  padding-top: 130px;
+  padding-left: 20px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+#img1{
+  background-image: url("~src/img/img1.png");
+  background-repeat: no-repeat;
+  background-size: 311px 233px;
+  width: 311px;
+  height: 233px;
+}
+#img2{
+  background-image: url("~src/img/img2.png");
+  background-repeat: no-repeat;
+  background-size: 311px 233px;
+  width: 311px;
+  height: 233px;
+}
+#img3{
+  background-image: url("~src/img/img3.png");
+  background-repeat: no-repeat;
+  background-size: 311px 233px;
+  width: 311px;
+  height: 233px;
+}
+#img4{
+  background-image: url("~src/img/img4.png");
+  background-repeat: no-repeat;
+
+  background-size: 311px 233px;
+  width: 311px;
+  height: 233px;
+}
+#img5{
+  background-image: url("~src/img/img5.png");
+  background-repeat: no-repeat;
+
+  background-size: 311px 233px;
+  width: 311px;
+  height: 233px;
+}
+#img6{
+  background-image: url("~src/img/img6.png");
+  background-repeat: no-repeat;
+
+  background-size: 311px 233px;
+  width: 311px;
+  height: 233px;
+}
+.fila{
+  display: flex;
+  justify-content:space-between;
+  flex-direction: row;
+align-items: center;
+}
+.imagenes{
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+
+}
+#tercera_fila p{
+  display: flex;
+  height: 76px;
+  flex-direction: column;
+  flex-shrink: 0;
+  color: #3D3838;
+  font-family: Jockey One;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  width: 300px;
+}
+
+@media (max-width: 899px) {
+
+#segunda_fila{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column-reverse;
+  padding-top: 80px;
+}
+
+  #primera_col{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: -webkit-center;
+  }
+  .imagenes{
+    justify-content: center;
+    flex-direction: row;
+    align-items: center;
+
+  }
+
+  #tercera_fila p{
+    text-align: -webkit-center;
+
+  }
+}
+@media (max-width: 999px) {
+.fila{
+  justify-content: center;
+  flex-direction: column;
+
+}
+  #tercera_fila{
+    padding-top: 210px;
+
+  }
+
+  #tercera_fila p{
+    text-align: -webkit-center;
+
+  }
+}
+@media (max-width: 732px) {
+  .imagenes{
+    display: flex;
+    flex-direction: column;
+  }
+}
