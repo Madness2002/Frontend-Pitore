@@ -10,6 +10,11 @@ export class MenuComponent {
   constructor(public router: Router) {
 
   }
+
+  getURL():string{
+    return this.router.url;
+
+  }
   IrALogin(url:string): void{
 
     this.router.navigate([url])
