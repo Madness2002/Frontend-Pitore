@@ -1,0 +1,222 @@
+#texto_1{
+  display: flex;
+  width: 290px;
+  height: 158px;
+  flex-direction: column;
+  flex-shrink: 0;
+  color: #3D3838;
+  font-family: 'Jockey One';
+  font-size: 38px;
+  font-style: normal;
+  font-weight: lighter;
+  line-height: normal;
+
+}
+#texto_2{
+
+  display: flex;
+  width: 330px;
+  height: 76px;
+  flex-direction: column;
+  flex-shrink: 0;
+  color: #3D3838;
+  font-family: Jockey One;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+
+}
+#call_to_action{
+  margin-top: 80px;
+  width: 289px;
+  height: 48px;
+  flex-shrink: 0;
+  border-radius: 10px;
+  background: radial-gradient(2466.87% 67.10% at 42.41% 25.00%, rgba(0, 151, 162, 0.77) 0%, #0097A2 55.73%, rgba(0, 151, 162, 0.38) 100%);
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  display: flex;
+  justify-content: center;
+  border: none;
+  text-align: center;
+  align-items: center;
+  font-family: Jockey One;
+  font-size: 26px;
+  font-style: normal;
+  font-weight: bold;
+  letter-spacing:2.0px;
+}
+
+#call_to_action:hover{
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.55);
+
+}
+
+
+#segunda_fila{
+  padding-top: 100px;
+  padding-left: 20px;
+  flex-direction: row;
+  display: flex;
+  justify-content: space-around;
+}
+
+#bot{
+  background-image: url("~src/img/botsito sin fondo 1.png");
+  width: 184px;
+  height: 208px;
+  flex-shrink: 0;
+}
+#primera_col{
+
+  width: 50%;
+}
+#segunda_col{
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+#fondo_col{
+  position: absolute;
+  background-image: url("~src/img/Rectangle 2.png");
+  background-repeat: no-repeat;
+  background-position: right;
+  background-size: 55% 100%;
+  width: 100%;
+  height: 693px;
+  opacity: 87%;
+  align-items: end;
+  z-index: -1;
+}
+
+#tercera_fila{
+  padding-top: 130px;
+  padding-left: 20px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+#img1{
+  background-image: url("~src/img/img1.png");
+  background-repeat: no-repeat;
+  background-size: 311px 233px;
+  width: 311px;
+  height: 233px;
+}
+#img2{
+  background-image: url("~src/img/img2.png");
+  background-repeat: no-repeat;
+  background-size: 311px 233px;
+  width: 311px;
+  height: 233px;
+}
+#img3{
+  background-image: url("~src/img/img3.png");
+  background-repeat: no-repeat;
+  background-size: 311px 233px;
+  width: 311px;
+  height: 233px;
+}
+#img4{
+  background-image: url("~src/img/img4.png");
+  background-repeat: no-repeat;
+
+  background-size: 311px 233px;
+  width: 311px;
+  height: 233px;
+}
+#img5{
+  background-image: url("~src/img/img5.png");
+  background-repeat: no-repeat;
+
+  background-size: 311px 233px;
+  width: 311px;
+  height: 233px;
+}
+#img6{
+  background-image: url("~src/img/img6.png");
+  background-repeat: no-repeat;
+
+  background-size: 311px 233px;
+  width: 311px;
+  height: 233px;
+}
+.fila{
+  display: flex;
+  justify-content:space-between;
+  flex-direction: row;
+  align-items: center;
+}
+.imagenes{
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+
+}
+#tercera_fila p{
+  display: flex;
+  height: 76px;
+  flex-direction: column;
+  flex-shrink: 0;
+  color: #3D3838;
+  font-family: Jockey One;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  width: 300px;
+}
+
+@media (max-width: 899px) {
+
+  #segunda_fila{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column-reverse;
+    padding-top: 80px;
+  }
+
+  #primera_col{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: -webkit-center;
+  }
+  .imagenes{
+    justify-content: center;
+    flex-direction: row;
+    align-items: center;
+
+  }
+
+  #tercera_fila p{
+    text-align: -webkit-center;
+
+  }
+}
+@media (max-width: 999px) {
+  .fila{
+    justify-content: center;
+    flex-direction: column;
+
+  }
+  #tercera_fila{
+    padding-top: 210px;
+
+  }
+
+  #tercera_fila p{
+    text-align: -webkit-center;
+
+  }
+}
+@media (max-width: 732px) {
+  .imagenes{
+    display: flex;
+    flex-direction: column;
+  }
+}
