@@ -1,7 +1,8 @@
 #iniciar{
-  margin-top: 80px;
-  width: 289px;
-  height: 48px;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  width: 218px;
+  height: 33px;
   flex-shrink: 0;
   border-radius: 10px;
   background: radial-gradient(2466.87% 67.10% at 42.41% 25.00%, rgba(0, 151, 162, 0.77) 0%, #0097A2 55.73%, rgba(0, 151, 162, 0.38) 100%);
@@ -11,7 +12,7 @@
   border: none;
   text-align: center;
   align-items: center;
-  font-family: Jockey One;
+  font-family: 'Jockey One';
   font-size: 26px;
   font-style: normal;
   font-weight: bold;
@@ -30,12 +31,18 @@
   display: flex;
   justify-content: center;
   flex-direction: column;
+  align-items: center;
+
 }
 #box-data{
   display: flex;
   justify-content: center;
   flex-direction: column;
-
+  border-radius: 20px;
+  background: #FFF;
+  width: 80%;
+  padding-top: 50px;
+  
 }
 .input-box{
   display: flex;
@@ -45,10 +52,12 @@
 }
 
 #txt-iniciar-sesion{
-
-  font-family: Jockey One;
-  font-size: 26px;
+  color: #000;
   font-style: normal;
-  font-weight: bold;
-  letter-spacing:2.0px;
+  line-height: normal;
+  padding-bottom: 20px;
+  font-family: 'Inter';
+  font-size:39px;
+  font-weight: 700;
+
 }
