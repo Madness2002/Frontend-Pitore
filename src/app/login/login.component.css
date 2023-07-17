@@ -5,7 +5,7 @@
   height: 33px;
   flex-shrink: 0;
   border-radius: 10px;
-  background: radial-gradient(2466.87% 67.10% at 42.41% 25.00%, rgba(0, 151, 162, 0.77) 0%, #0097A2 55.73%, rgba(0, 151, 162, 0.38) 100%);
+  background: radial-gradient(2466.87% 67.10% at 42.41% 25.00%, rgba(0, 151, 162, 0.77) 0%, #0097A2 55.73%, rgba(0, 151, 162, 0.58) 100%);
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
   display: flex;
   justify-content: center;
@@ -15,7 +15,7 @@
   font-family: 'Jockey One';
   font-size: 26px;
   font-style: normal;
-  font-weight: bold;
+  font-weight: inherit;
   letter-spacing:2px;
   align-self: center;
 
@@ -26,13 +26,12 @@
   background: linear-gradient(180deg, rgba(0, 151, 162, 0.47) 33.33%, #0097A2 79.69%);
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.30);
   width: 345px;
-  height: 419px;
   flex-shrink: 0;
   display: flex;
   justify-content: center;
   flex-direction: column;
   align-items: center;
-
+  padding-bottom: 35px;
 }
 #box-data{
   display: flex;
@@ -42,12 +41,7 @@
   background: #FFF;
   width: 80%;
   padding-top: 50px;
-
-}
-.input-box{
-  display: flex;
-  justify-content: center;
-  flex-direction: row;
+  align-items: center;
 
 }
 
@@ -55,9 +49,67 @@
   color: #000;
   font-style: normal;
   line-height: normal;
+  padding-top: 20px;
   padding-bottom: 20px;
   font-family: 'Inter';
   font-size:39px;
   font-weight: 700;
 
 }
+#logo-usuario{
+  background-image: url("~src/img/logo_usuario.png");
+width: 27px;
+  height: 24px;
+}
+#logo-contra{
+  background-image: url("~src/img/logo_contra.png");
+  width: 27px;
+  height: 24px;
+}
+.input-box{
+  transition: 1s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  width: auto;
+  height: 36px;
+  border-radius: 5px;
+  border-bottom: 3px ridge #0097A2;
+  border-left: 1px ridge #0097A2;
+  border-right: 1px ridge #0097A2;
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.20);
+}
+.input-box input{
+  border: none;
+margin-left:12px ;
+}
+.input-box i{
+  margin-left: 5px;
+}
+#box-hiper{
+  width: 85%;
+  display: flex;
+  justify-content: space-between;
+margin-top: 15px;
+  color: rgba(0, 0, 0, 0.56);
+  font-family: 'Jaldi';
+  font-size: 11px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  text-decoration-line: underline;
+}
+
+.input-box input:focus {
+  outline:none;
+
+
+}
+.input-box:hover {
+  transition:1s;
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.50);
+
+
+}
+
