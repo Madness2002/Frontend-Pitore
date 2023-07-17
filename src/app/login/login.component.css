@@ -18,9 +18,14 @@
   font-weight: inherit;
   letter-spacing:2px;
   align-self: center;
-
+  transition: 1s;
+}
+#iniciar:hover{
+  transform: scale(1.10);
+  transition: 1s;
 }
 #card{
+  transition: 1s;
   text-align: center;
   border-radius: 20px;
   background: linear-gradient(180deg, rgba(0, 151, 162, 0.47) 33.33%, #0097A2 79.69%);
@@ -32,6 +37,11 @@
   flex-direction: column;
   align-items: center;
   padding-bottom: 35px;
+}
+#card:hover{
+  transform: scale(1.01);
+  box-shadow: 2px 4px 4px 2px rgba(0, 0, 0, 0.50);
+transition: 1s;
 }
 #box-data{
   display: flex;
