@@ -8,7 +8,7 @@ margin-right: 20px;
   background-color: transparent !important;
 }
 #logo_nombre{
-
+cursor: pointer;
   display: flex;
   justify-content: space-between;
   flex-direction: row;

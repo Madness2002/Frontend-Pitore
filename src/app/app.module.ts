@@ -6,6 +6,8 @@ import { AppComponent } from './app.component';
 import { MenuComponent } from './menu/menu.component';
 import { LoginComponent } from './login/login.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
+import { RegisterComponent } from './register/register.component';
+import { InicioComponent } from './inicio/inicio.component';
 
 
 @NgModule({
@@ -13,7 +15,9 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
     AppComponent,
     MenuComponent,
     LoginComponent,
-    LandingPageComponent
+    LandingPageComponent,
+    RegisterComponent,
+    InicioComponent
   ],
   imports: [
     BrowserModule,

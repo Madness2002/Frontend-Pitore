@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -6,13 +6,32 @@ import { Router } from '@angular/router';
   templateUrl: './menu.component.html',
   styleUrls: ['./menu.component.css']
 })
-export class MenuComponent {
+export class MenuComponent implements OnInit{
+  @Input() validador: boolean | undefined;
+  @Input() validadorRedirect: boolean | undefined;
+rediccionInicial?:string;
   constructor(public router: Router) {
-
   }
 
-  getURL():string{
+  ngOnInit(): void {
+        if (this.validadorRedirect) this.rediccionInicial='/'
+    else this.rediccionInicial='/inicio'
+   console.log(this.rediccionInicial)
+    }
+  GetValidador():undefined{
+    // @ts-ignore
+    return this.validador;
+  }
+  GetValidadorRedirect():string{
+    // @ts-ignore
+    return this.validadorRedirect;
+  }
+  GetURL():string{
     return this.router.url;
+  }
+  Redireccionar(): void{
+
+    this.router.navigate([this.rediccionInicial])
 
   }
   IrALogin(url:string): void{

@@ -12,4 +12,9 @@ export class LoginComponent {
   constructor(public router: Router) {
 
   }
+
+  IrA(url:string): void{
+
+    this.router.navigate([url])
+  }
 }

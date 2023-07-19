@@ -1,5 +1,5 @@
 <div id="fondo_col"></div>
-<app-menu></app-menu>
+<app-menu [validador] = true [validadorRedirect]=true ></app-menu>
 
 <div id="segunda_fila">
 
@@ -8,7 +8,7 @@
 
     <p id="texto_2">Evalua la idoneidad de los conjuntos de datos, usabilidad y rendimiento de tu chatbot de forma facil y rapida.</p>
 
-    <button id="call_to_action" type="button" class="btn btn-primary">Regístrate ahora</button>
+    <button id="call_to_action" type="button" class="btn btn-primary" (click)="IrA('/register')" >Regístrate ahora</button>
   </div>
 
   <div id="segunda_col">
