@@ -8,6 +8,7 @@ import { LoginComponent } from './login/login.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { RegisterComponent } from './register/register.component';
 import { InicioComponent } from './inicio/inicio.component';
+import { Menu2Component } from './menu2/menu2.component';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { InicioComponent } from './inicio/inicio.component';
     LoginComponent,
     LandingPageComponent,
     RegisterComponent,
-    InicioComponent
+    InicioComponent,
+    Menu2Component
   ],
   imports: [
     BrowserModule,

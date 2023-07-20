@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import {AfterViewInit, Component, ElementRef, Input, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -10,13 +10,16 @@ export class MenuComponent implements OnInit{
   @Input() validador: boolean | undefined;
   @Input() validadorRedirect: boolean | undefined;
 rediccionInicial?:string;
-  constructor(public router: Router) {
+  
+  constructor(public router: Router, private renderer: Renderer2) {
   }
+
 
   ngOnInit(): void {
         if (this.validadorRedirect) this.rediccionInicial='/'
     else this.rediccionInicial='/inicio'
-   console.log(this.rediccionInicial)
+   console.log(this.rediccionInicial);
+
     }
   GetValidador():undefined{
     // @ts-ignore
