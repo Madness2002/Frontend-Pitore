@@ -7,10 +7,19 @@ import { Router } from '@angular/router';
   styleUrls: ['./menu2.component.css']
 })
 export class Menu2Component {
+  vMenuUsuario?:boolean;
   constructor(public router: Router) {
   }
   IrA(url:string): void{
 
     this.router.navigate([url])
+  }
+  Validador(): void{
+
+    this.vMenuUsuario= !this.vMenuUsuario;
+  }
+  GetValidador():boolean{
+    // @ts-ignore
+    return this.vMenuUsuario;
   }
 }
