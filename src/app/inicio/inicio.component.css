@@ -1,13 +1,26 @@
+.cir-perfil{
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  background-color: white;
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.20);
+  background-image: url("~src/img/buscar.png");
+  background-repeat: no-repeat;
+  background-position: center;
+}
 #col2{
   display: flex;
   flex-direction: column;
   justify-self: center;
   align-self: center;
 width: 38.5vw;
+  margin-right: 140px;
 }
 #big-box{
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
+  margin-top: 40px;
 }
 #box-nombre-grupo{
   width: 199px;
