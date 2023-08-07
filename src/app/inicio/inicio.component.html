@@ -11,14 +11,60 @@
   <div id="col2">
     <div id="box-crear-iteracion">
       <h2>Crear iteración</h2>
-      <button id="btn-crear-iteracion" class="btn btn-primary">+</button>
+      <button id="btn-crear-iteracion" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#form-crear-iteracion">+</button>
     </div>
     <div id="box-iteraciones">
       <h2>Iteraciones</h2>
-      <div id="iteraciones"></div>
+      <div id="iteraciones">
+        <div class="table-responsive" style="padding: 25px">
+          <table class="table" >
+            <thead>
+            <tr style="font-size: 15px;">
+              <th scope="col"></th>
+              <th scope="col">Creado</th>
+              <th scope="col">Nivel</th>
+              <th scope="col">%</th>
+              <th scope="col">Estado</th>
+              <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr style="font-size: 12px;">
+              <th scope="row" style="display: flex;flex-direction: row;"> <div class="ico_iteracion"></div> <p >Iteracion 1</p></th>
+              <td>Mark</td>
+              <td>Otto</td>
+              <td>@mdo</td>
+              <td>Mark</td>
+              <td>  <button (click)=Validador() class="ico_3p"></button> <div class="opciones" *ngIf="GetValidador()==true"> <button class="ico_edit"></button> <button class="ico_eli"></button> </div></td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
 
   </div>
   <div id="burbu-perfil" style="visibility: hidden" class="cir-perfil">
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="form-crear-iteracion" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content" >
+      <div class="modal-header" style="display: flex;flex-direction: column;align-items: start;border: none;padding-top: 30px;">
+        <h5 class="modal-title" id="exampleModalLongTitle">Nueva iteración</h5>
+        <p style="font-size: 14px;padding-top: 5px;">Ingrese el nombre de la iteración</p>
+      </div>
+      <div class="modal-body">
+        <div class="input-box" id="buscador">
+          <input type="text" placeholder="Ingrese el nombre">
+        </div>
+      </div>
+      <div class="modal-footer" style="border: none;padding-top:40px; ">
+        <button type="button" class="btn-aceptar" style="margin-right: 20px;" >Continuar</button>
+        <button type="button" class="btn-cancelar" data-bs-dismiss="modal">Cancelar</button>
+      </div>
+    </div>
   </div>
 </div>
