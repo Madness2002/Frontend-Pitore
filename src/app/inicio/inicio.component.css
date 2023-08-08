@@ -1,3 +1,4 @@
+
 .modal-footer{
   justify-content: flex-start;
 padding-bottom:34px;
@@ -19,7 +20,6 @@ padding-bottom:34px;
   align-self: center;
   transition: 1s;
   color: #494949;
-
 }
 .btn-aceptar{
   flex-shrink: 0;
@@ -142,6 +142,9 @@ align-items: center;
   background-repeat: no-repeat;
   background-position: center;
 }
+.cir-perfil:hover{
+  cursor: pointer;
+}
 #col2{
   display: flex;
   flex-direction: column;
@@ -253,9 +256,32 @@ left: 0px;
 
 #burbu-perfil{
   display: none;
-
 }
 #col2{
   margin-left: 42px;
 }
+  #logo-buscar{
+    background-image: url("~src/img/buscar.png");
+    width: 24px;
+    height: 20px;
+  }
+  #burbu-buscador{
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    background-color: white;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.20);
+    background-image: url("~src/img/buscar.png");
+    background-size: 13px;
+    background-repeat: no-repeat;
+    background-position: center;
+    top: 30px;
+    left: 4px;
+    position: absolute;
+  }
+
+  #burbu-buscador:hover{
+    cursor: pointer;
+
+  }
 }

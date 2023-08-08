@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
 })
 export class InicioComponent {
   vOpciones?:boolean;
+  vBuscador?:boolean;
   constructor(public router: Router) {
   }
 
@@ -23,4 +24,13 @@ export class InicioComponent {
     // @ts-ignore
     return this.vOpciones;
   }
+  ValidadorBuscador(): void{
+
+    this.vBuscador= !this.vBuscador;
+  }
+  GetValidadorBuscador():boolean{
+    // @ts-ignore
+    return this.vBuscador;
+  }
+
 }
