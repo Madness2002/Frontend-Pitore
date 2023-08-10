@@ -1,17 +1,23 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { Router } from '@angular/router';
+import {Baby} from "../../entities/Baby";
+import {BabyServiceService} from "../../services/baby-service.service";
 
 @Component({
   selector: 'app-inicio',
   templateUrl: './inicio.component.html',
   styleUrls: ['./inicio.component.css']
 })
-export class InicioComponent {
+export class InicioComponent implements OnInit{
   vOpciones?:boolean;
   vBuscador?:boolean;
-  constructor(public router: Router) {
+  babies:Baby[];
+  constructor(public router: Router, private babyService: BabyServiceService) {
   }
+private ObtenerBabies(){
+    this.babyService.obtenerBabies().subscribe(dato=>{this.babies=dato})
 
+}
   IrA(url:string): void{
 
     this.router.navigate([url])
@@ -31,6 +37,10 @@ export class InicioComponent {
   GetValidadorBuscador():boolean{
     // @ts-ignore
     return this.vBuscador;
+  }
+
+  ngOnInit(): void {
+    this.ObtenerBabies();
   }
 
 }

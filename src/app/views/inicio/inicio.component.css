@@ -73,14 +73,14 @@ color: white;
   width: 14px;
   height: 14px;
   flex-shrink: 0;
-  background: url("~src/img/ico_edit.jpg");
+  background: url("~../../../img/ico_edit.jpg");
   border: none;
 }
 .ico_eli{
   width: 14px;
   height: 14px;
   flex-shrink: 0;
-  background: url("~src/img/ico_eli.jpg");
+  background: url("~../../../img/ico_eli.jpg");
   border: none;
 }
 
@@ -100,7 +100,7 @@ display: flex;
   top: 450px;
 }
 .ico_3p{
-  background: url("~src/img/ico_3p.jpg");
+  background: url("~../../../img/ico_3p.jpg");
   width: 14px;
   height: 14px;
   border: none;
@@ -125,7 +125,7 @@ th p{
   width: 36px;
   height: 36px;
   flex-shrink: 0;
-  background: url("~src/img/ico_iteracion.png");
+  background: url("~../../../img/ico_iteracion.png");
 }
 .table{
   text-align: center;
@@ -138,7 +138,7 @@ align-items: center;
   height: 40px;
   background-color: white;
   box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.20);
-  background-image: url("~src/img/buscar.png");
+  background-image: url("~../../../img/buscar.png");
   background-repeat: no-repeat;
   background-position: center;
 }
@@ -261,7 +261,7 @@ left: 0px;
   margin-left: 42px;
 }
   #logo-buscar{
-    background-image: url("~src/img/buscar.png");
+    background-image: url("~../../../img/buscar.png");
     width: 24px;
     height: 20px;
   }
@@ -271,7 +271,7 @@ left: 0px;
     height: 20px;
     background-color: white;
     box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.20);
-    background-image: url("~src/img/buscar.png");
+    background-image: url("~../../../img/buscar.png");
     background-size: 13px;
     background-repeat: no-repeat;
     background-position: center;

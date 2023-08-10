@@ -3,12 +3,13 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { MenuComponent } from './menu/menu.component';
-import { LoginComponent } from './login/login.component';
-import { LandingPageComponent } from './landing-page/landing-page.component';
-import { RegisterComponent } from './register/register.component';
-import { InicioComponent } from './inicio/inicio.component';
-import { Menu2Component } from './menu2/menu2.component';
+import { MenuComponent } from './views/menu/menu.component';
+import { LoginComponent } from './views/login/login.component';
+import { LandingPageComponent } from './views/landing-page/landing-page.component';
+import { RegisterComponent } from './views/register/register.component';
+import { InicioComponent } from './views/inicio/inicio.component';
+import { Menu2Component } from './views/menu2/menu2.component';
+import {HttpClientModule} from "@angular/common/http";
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { Menu2Component } from './menu2/menu2.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

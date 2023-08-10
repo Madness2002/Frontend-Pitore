@@ -67,18 +67,18 @@
 
 }
 #logo-nombre{
-  background-image: url("~src/img/logo_nombre.png");
+  background-image: url("~../../../img/logo_nombre.png");
   width: 27px;
   height: 24px;
 }
 
 #logo-usuario{
-  background-image: url("~src/img/logo_usuario.png");
+  background-image: url("~../../../img/logo_usuario.png");
   width: 27px;
   height: 24px;
 }
 .logo-contra{
-  background-image: url("~src/img/logo_contra.png");
+  background-image: url("~../../../img/logo_contra.png");
   width: 27px;
   height: 24px;
 }

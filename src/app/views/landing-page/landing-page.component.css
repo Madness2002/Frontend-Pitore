@@ -62,7 +62,7 @@
 }
 
 #bot{
-  background-image: url("~src/img/botsito sin fondo 1.png");
+  background-image: url("~../../../img/botsito sin fondo 1.png");
   width: 184px;
   height: 208px;
   flex-shrink: 0;
@@ -80,7 +80,7 @@
 }
 #fondo_col{
   position: absolute;
-  background-image: url("~src/img/Rectangle 2.png");
+  background-image: url("~../../../img/Rectangle 2.png");
   background-repeat: no-repeat;
   background-position: right;
   background-size: 55% 100%;
@@ -99,28 +99,28 @@
   flex-direction: column;
 }
 #img1{
-  background-image: url("~src/img/img1.png");
+  background-image: url("~../../../img/img1.png");
   background-repeat: no-repeat;
   background-size: 311px 233px;
   width: 311px;
   height: 233px;
 }
 #img2{
-  background-image: url("~src/img/img2.png");
+  background-image: url("~../../../img/img2.png");
   background-repeat: no-repeat;
   background-size: 311px 233px;
   width: 311px;
   height: 233px;
 }
 #img3{
-  background-image: url("~src/img/img3.png");
+  background-image: url("~../../../img/img3.png");
   background-repeat: no-repeat;
   background-size: 311px 233px;
   width: 311px;
   height: 233px;
 }
 #img4{
-  background-image: url("~src/img/img4.png");
+  background-image: url("~../../../img/img4.png");
   background-repeat: no-repeat;
 
   background-size: 311px 233px;
@@ -128,7 +128,7 @@
   height: 233px;
 }
 #img5{
-  background-image: url("~src/img/img5.png");
+  background-image: url("~../../../img/img5.png");
   background-repeat: no-repeat;
 
   background-size: 311px 233px;
@@ -136,7 +136,7 @@
   height: 233px;
 }
 #img6{
-  background-image: url("~src/img/img6.png");
+  background-image: url("~../../../img/img6.png");
   background-repeat: no-repeat;
 
   background-size: 311px 233px;

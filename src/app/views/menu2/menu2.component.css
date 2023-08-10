@@ -4,7 +4,7 @@
   height: 40px;
   background-repeat: no-repeat;
   background-position: center;
-  background-image: url("~src/img/salir.png");
+  background-image: url("~../../../img/salir.png");
 
 }
 #logo_usuario{
@@ -13,7 +13,7 @@
   height: 40px;
   background-repeat: no-repeat;
   background-position: center;
-  background-image: url("~src/img/buscar.png");
+  background-image: url("~../../../img/buscar.png");
 }
 .filas{
   display: flex;
@@ -61,7 +61,7 @@ font-size: 10px;
   height: 40px;
   background-color: white;
   box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.20);
-  background-image: url("~src/img/buscar.png");
+  background-image: url("~../../../img/buscar.png");
   background-repeat: no-repeat;
   background-position: center;
 }
@@ -70,7 +70,7 @@ font-size: 10px;
 }
 
 #logo-buscar{
-  background-image: url("~src/img/buscar.png");
+  background-image: url("~../../../img/buscar.png");
   width: 27px;
   height: 24px;
 }
@@ -114,7 +114,7 @@ outline: none;
 #logo{
   width: 59px;
   height: 70px;
-  background-image: url("~src/img/logo.png");
+  background-image: url("~../../../img/logo.png");
   margin-right: 20px;
 }
 .bg-body-tertiary{

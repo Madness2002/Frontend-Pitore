@@ -30,12 +30,12 @@
             </tr>
             </thead>
             <tbody>
-            <tr style="font-size: 12px;">
+            <tr style="font-size: 12px;" *ngFor="let baby of babies">
               <th scope="row" style="display: flex;flex-direction: row;"> <div class="ico_iteracion"></div> <p >Iteracion 1</p></th>
-              <td>Mark</td>
-              <td>Otto</td>
-              <td>@mdo</td>
-              <td>Mark</td>
+              <td >{{baby.mmBabyName}}</td>
+              <td>{{baby.mmBabyWeightActual}}</td>
+              <td>{{baby.mmBabyName}}</td>
+              <td>{{baby.mmBabyName}}</td>
               <td>  <button (click)=Validador() class="ico_3p"></button> <div class="opciones" *ngIf="GetValidador()==true"> <button class="ico_edit"></button> <button class="ico_eli"></button> </div></td>
             </tr>
             </tbody>
