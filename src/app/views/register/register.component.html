@@ -1,29 +1,29 @@
 <app-menu [validadorRedirect]=true></app-menu>
 <div style="width: 100vw;height: 80vh;display: flex;justify-content: center;align-items: center;">
-  <div id="card">
+  <Form  id="card">
     <div id="txt-iniciar-sesion">Regístrate</div>
     <div id="box-data">
 
       <div class="input-box" style="margin-bottom: 30px;">
         <i id="logo-usuario"></i>
-        <input type="text" placeholder="Usuario">
+        <input [(ngModel)] = "usuario.usuario" type="text" placeholder="Usuario">
       </div>
       <div class="input-box" style="margin-bottom: 30px;">
         <i id="logo-nombre"></i>
-        <input type="text" placeholder="Nombre">
+        <input [(ngModel)] = "usuario.nomUsuario" type="text" placeholder="Nombre">
       </div>
 
       <div class="input-box" style="margin-bottom: 30px;">
         <i class="logo-contra"></i>
-        <input type="password" placeholder="Contraseña">
+        <input [(ngModel)] = "usuario.passUsuario" type="password" placeholder="Contraseña">
       </div>
       <div class="input-box">
         <i class="logo-contra"></i>
-        <input type="password" placeholder="Repetir contraseña">
+        <input  type="password" placeholder="Repetir contraseña">
       </div>
-      <button id="iniciar" type="button" class="btn btn-primary">Registrarse</button>
+      <button id="iniciar" type="button" class="btn btn-primary" (click)=formSubmit()>Registrarse</button>
 
     </div>
-  </div>
+  </Form>
 </div>
 

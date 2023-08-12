@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import { Router } from '@angular/router';
-import {Baby} from "../../entities/Baby";
+import {Usuario} from "../../entities/./usuario";
 import {BabyServiceService} from "../../services/baby-service.service";
 
 @Component({
@@ -11,7 +11,7 @@ import {BabyServiceService} from "../../services/baby-service.service";
 export class InicioComponent implements OnInit{
   vOpciones?:boolean;
   vBuscador?:boolean;
-  babies:Baby[];
+  babies:Usuario[];
   constructor(public router: Router, private babyService: BabyServiceService) {
   }
 private ObtenerBabies(){

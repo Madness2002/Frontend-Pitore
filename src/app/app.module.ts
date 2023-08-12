@@ -10,6 +10,7 @@ import { RegisterComponent } from './views/register/register.component';
 import { InicioComponent } from './views/inicio/inicio.component';
 import { Menu2Component } from './views/menu2/menu2.component';
 import {HttpClientModule} from "@angular/common/http";
+import {FormsModule} from "@angular/forms";
 
 
 @NgModule({
@@ -22,11 +23,12 @@ import {HttpClientModule} from "@angular/common/http";
     InicioComponent,
     Menu2Component
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        HttpClientModule,
+        FormsModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

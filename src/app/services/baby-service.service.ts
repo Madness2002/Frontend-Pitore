@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {Baby} from "../entities/Baby";
+import {Usuario} from "../entities/./usuario";
 
 @Injectable({
   providedIn: 'root'
@@ -12,8 +12,8 @@ export class BabyServiceService {
 
   private baseURL= "http://localhost:8103/babies/list"
 
-  obtenerBabies():Observable<Baby[]>{
-return this.httpClient.get<Baby[]>(`${this.baseURL}`)
+  obtenerBabies():Observable<Usuario[]>{
+return this.httpClient.get<Usuario[]>(`${this.baseURL}`)
 
 
   }
