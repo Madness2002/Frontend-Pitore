@@ -11,7 +11,7 @@ import { InicioComponent } from './views/inicio/inicio.component';
 import { Menu2Component } from './views/menu2/menu2.component';
 import {HttpClientModule} from "@angular/common/http";
 import {FormsModule} from "@angular/forms";
-import {authInterceptorProviders} from "./services/auth.interceptor";
+import {authInterceptorProviders} from "./services/security/auth.interceptor";
 
 
 @NgModule({

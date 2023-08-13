@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import {UserService} from "../../services/user.service";
-import {JwtRequest} from "../../entities/jwt-request";
-import {error} from "@angular/compiler-cli/src/transformers/util";
+import {UserService} from "../../services/usuario/user.service";
+import {JwtRequest} from "../../entities/Jwt/jwt-request";
 
 @Component({
   selector: 'app-login',

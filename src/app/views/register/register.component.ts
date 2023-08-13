@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import {UserService} from "../../services/user.service";
-import {Usuario} from "../../entities/usuario";
+import {UserService} from "../../services/usuario/user.service";
+import {Usuario} from "../../entities/Usuario/usuario";
 import {NgForm} from "@angular/forms";
 
 

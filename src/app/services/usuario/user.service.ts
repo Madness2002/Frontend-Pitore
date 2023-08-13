@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import baseUrl from './helper';
-import {Usuario} from "../entities/usuario";
-import {JwtRequest} from "../entities/jwt-request";
+import baseUrl from '../security/helper';
+import {Usuario} from "../../entities/Usuario/usuario";
+import {JwtRequest} from "../../entities/Jwt/jwt-request";
 import {Subject} from "rxjs";
 import {Router} from "@angular/router";
+import {error} from "@angular/compiler-cli/src/transformers/util";
 @Injectable({
   providedIn: 'root'
 })
@@ -30,9 +31,9 @@ export class UserService {
   public loginUsuario(jwtRequest: JwtRequest){
     this.generarToken(jwtRequest).subscribe(
       (data:any) => {
-        console.log(data);
-        localStorage.setItem('token',data.token);
+          localStorage.setItem('token',data.token);
         this.getCurrentUser().subscribe((user:any) => {
+
           this.setUser(user);
           console.log(user);
         })
@@ -84,8 +85,10 @@ return JSON.parse(userStr);
    }
   }
   public getUserRole(){
-let user = this.getUser();
-return user.authorities[0].authority;
+
+      let user = this.getUser();
+      return user.authorities[0].authority;
+
   }
 
   public getCurrentUser(){
