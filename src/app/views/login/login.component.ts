@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import {UserService} from "../../services/user.service";
+import {JwtRequest} from "../../entities/jwt-request";
+import {error} from "@angular/compiler-cli/src/transformers/util";
 
 @Component({
   selector: 'app-login',
@@ -8,8 +11,8 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent {
 
-
-  constructor(public router: Router) {
+  jwtRequest: JwtRequest = {} as JwtRequest;
+  constructor(public router: Router,private userService: UserService ) {
 
   }
 
@@ -17,4 +20,12 @@ export class LoginComponent {
 
     this.router.navigate([url])
   }
+
+  FormSubmit(){
+this.userService.loginUsuario(this.jwtRequest);
+  }
+
+
+
+
 }

@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import { Router } from '@angular/router';
 import {Usuario} from "../../entities/./usuario";
-import {BabyServiceService} from "../../services/baby-service.service";
 
 @Component({
   selector: 'app-inicio',
@@ -12,12 +11,9 @@ export class InicioComponent implements OnInit{
   vOpciones?:boolean;
   vBuscador?:boolean;
   babies:Usuario[];
-  constructor(public router: Router, private babyService: BabyServiceService) {
+  constructor(public router: Router) {
   }
-private ObtenerBabies(){
-    this.babyService.obtenerBabies().subscribe(dato=>{this.babies=dato})
 
-}
   IrA(url:string): void{
 
     this.router.navigate([url])
@@ -40,7 +36,6 @@ private ObtenerBabies(){
   }
 
   ngOnInit(): void {
-    this.ObtenerBabies();
   }
 
 }

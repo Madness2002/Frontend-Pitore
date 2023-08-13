@@ -19,7 +19,7 @@ usuario:Usuario = {} as Usuario;
 
   formSubmit(){
     console.log(this.usuario);
-    if(this.usuario.usuario == '' || this.usuario.usuario == null){
+    if(this.usuario.username == '' || this.usuario.username == null){
       alert('El nombre de usuario es requerido !!')
       return;
     }

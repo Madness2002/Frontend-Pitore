@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import {UserService} from "../../services/user.service";
 
 @Component({
   selector: 'app-menu2',
@@ -8,7 +9,7 @@ import { Router } from '@angular/router';
 })
 export class Menu2Component {
   vMenuUsuario?:boolean;
-  constructor(public router: Router) {
+  constructor(public router: Router,private userService:UserService) {
   }
   IrA(url:string): void{
 
@@ -21,5 +22,9 @@ export class Menu2Component {
   GetValidador():boolean{
     // @ts-ignore
     return this.vMenuUsuario;
+  }
+
+  CerrarSesion(){
+    this.userService.cerrarSesion();
   }
 }
