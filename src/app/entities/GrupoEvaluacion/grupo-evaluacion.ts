@@ -1,22 +1,29 @@
-import {Usuario} from "../Usuario/usuario";
 // @ts-ignore
 import Date from "$GLOBAL$";
+import {Iteracion} from "../Iteracion/iteracion";
 
 export class GrupoEvaluacion {
 
   private _cGrupoEvaluacion: number;
   private _nomGrupoEvaluacion:string;
   private _dGrupoEvaluacion:Date;
-  private _usuario: Usuario;
+  private _iteraciones:Iteracion[];
 
 
-  constructor(cGrupoEvaluacion: number, nomGrupoEvaluacion: string, dGrupoEvaluacion: Date, usuario: Usuario) {
+  constructor(cGrupoEvaluacion: number, nomGrupoEvaluacion: string, dGrupoEvaluacion:Date, iteraciones: Iteracion[]) {
     this._cGrupoEvaluacion = cGrupoEvaluacion;
     this._nomGrupoEvaluacion = nomGrupoEvaluacion;
     this._dGrupoEvaluacion = dGrupoEvaluacion;
-    this._usuario = usuario;
+    this._iteraciones = iteraciones;
   }
 
+  get iteraciones(): Iteracion[] {
+    return this._iteraciones;
+  }
+
+  set iteraciones(value: Iteracion[]) {
+    this._iteraciones = value;
+  }
 
   get cGrupoEvaluacion(): number {
     return this._cGrupoEvaluacion;
@@ -41,13 +48,5 @@ export class GrupoEvaluacion {
 
   set dGrupoEvaluacion(value: Date) {
     this._dGrupoEvaluacion = value;
-  }
-
-  get usuario(): Usuario {
-    return this._usuario;
-  }
-
-  set usuario(value: Usuario) {
-    this._usuario = value;
   }
 }

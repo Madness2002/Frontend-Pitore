@@ -1,13 +1,14 @@
 <app-menu2></app-menu2>
 <div id="barra">
-  <button class="btn btn-primary">+</button>
+  <button (click)="CargarIteraciones(grupo.cGrupoEvaluacion)" [ngStyle]="{'background-color':colores[random(0,3)]}" class="btn btn-primary"  *ngFor="let grupo of gruposEvaluacion" >{{grupo.nomGrupoEvaluacion.charAt(0)}}</button>
 <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#form-crear-grupo">+</button>
 </div>
 
 <div id="big-box">
   <div id="col1">
-    <div id="box-nombre-grupo"><p>Crea un grupo de evaluación</p><div id="burbu-buscador" data-bs-toggle="modal" data-bs-target="#modal-buscador"></div>
+    <div id="box-nombre-grupo"><p *ngIf="grupoEvaluacion==null">Crea un grupo de evaluación</p> <p *ngIf="grupoEvaluacion!=null">{{grupoEvaluacion.nomGrupoEvaluacion}}</p><div id="burbu-buscador" data-bs-toggle="modal" data-bs-target="#modal-buscador"></div>
     </div>
+
   </div>
   <div id="col2">
     <div id="box-crear-iteracion">
@@ -30,9 +31,9 @@
             </tr>
             </thead>
             <tbody>
-            <tr style="font-size: 12px;" >
-              <th scope="row" style="display: flex;flex-direction: row;"> <div class="ico_iteracion"></div> <p >Iteracion 1</p></th>
-              <td ></td>
+            <tr style="font-size: 12px;"  *ngFor="let iteracion of iteraciones">
+              <th scope="row" style="display: flex;flex-direction: row;"> <div class="ico_iteracion"></div> <p >{{iteracion.nombIteracion}}</p></th>
+              <td>{{iteracion.dIteracion}}</td>
               <td></td>
               <td></td>
               <td></td>

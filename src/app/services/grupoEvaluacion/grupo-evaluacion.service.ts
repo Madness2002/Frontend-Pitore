@@ -21,5 +21,9 @@ public listar ():Observable<GrupoEvaluacion[]>{
     return this.httpClient.get<GrupoEvaluacion[]>(`${baseUrl}/grupoevaluacion/list`);
 }
 
+  public listarPorId (id:number):Observable<GrupoEvaluacion>{
+    return this.httpClient.get<GrupoEvaluacion>(`${baseUrl}/grupoevaluacion/buscar/`+id);
+  }
+
 
 }
