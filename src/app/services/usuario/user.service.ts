@@ -3,9 +3,11 @@ import {HttpClient} from "@angular/common/http";
 import baseUrl from '../security/helper';
 import {Usuario} from "../../entities/Usuario/usuario";
 import {JwtRequest} from "../../entities/Jwt/jwt-request";
-import {Subject} from "rxjs";
+import {Observable, Subject} from "rxjs";
 import {Router} from "@angular/router";
 import {error} from "@angular/compiler-cli/src/transformers/util";
+import {GrupoEvaluacion} from "../../entities/GrupoEvaluacion/grupo-evaluacion";
+import {Iteracion} from "../../entities/Iteracion/iteracion";
 @Injectable({
   providedIn: 'root'
 })
@@ -91,8 +93,8 @@ return JSON.parse(userStr);
 
   }
 
-  public getCurrentUser(){
-    return this.httpClient.get(`${baseUrl}/actual-usuario`)
+  public getCurrentUser():Observable<Usuario>{
+    return this.httpClient.get<Usuario>(`${baseUrl}/actual-usuario`)
   }
 
 }

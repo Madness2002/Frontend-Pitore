@@ -1,6 +1,7 @@
 // @ts-ignore
 import Date from "$GLOBAL$";
 import {Iteracion} from "../Iteracion/iteracion";
+import {Usuario} from "../Usuario/usuario";
 
 export class GrupoEvaluacion {
 
@@ -8,13 +9,19 @@ export class GrupoEvaluacion {
   private _nomGrupoEvaluacion:string;
   private _dGrupoEvaluacion:Date;
   private _iteraciones:Iteracion[];
+private _usuario:Usuario = {} as Usuario;
+
+  constructor(usuario:Usuario) {
+    this._usuario=usuario;
+  }
 
 
-  constructor(cGrupoEvaluacion: number, nomGrupoEvaluacion: string, dGrupoEvaluacion:Date, iteraciones: Iteracion[]) {
-    this._cGrupoEvaluacion = cGrupoEvaluacion;
-    this._nomGrupoEvaluacion = nomGrupoEvaluacion;
-    this._dGrupoEvaluacion = dGrupoEvaluacion;
-    this._iteraciones = iteraciones;
+  get usuario(): Usuario {
+    return this._usuario;
+  }
+
+  set usuario(value: Usuario) {
+    this._usuario = value;
   }
 
   get iteraciones(): Iteracion[] {

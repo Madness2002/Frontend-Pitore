@@ -1,5 +1,6 @@
 // @ts-ignore
 import Date from "$GLOBAL$";
+import {GrupoEvaluacion} from "../GrupoEvaluacion/grupo-evaluacion";
 
 export class Usuario {
   private _cusuario: number;
@@ -8,7 +9,16 @@ export class Usuario {
   private _password:string;
   private _imgUsuario:string;
   private _dUsuario:Date;
+private _grupos:GrupoEvaluacion[];
 
+
+  get grupos(): GrupoEvaluacion[] {
+    return this._grupos;
+  }
+
+  set grupos(value: GrupoEvaluacion[]) {
+    this._grupos = value;
+  }
 
   get cusuario(): number {
     return this._cusuario;

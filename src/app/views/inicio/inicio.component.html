@@ -1,6 +1,6 @@
 <app-menu2></app-menu2>
 <div id="barra">
-  <button (click)="CargarIteraciones(grupo.cGrupoEvaluacion)" [ngStyle]="{'background-color':colores[random(0,3)]}" class="btn btn-primary"  *ngFor="let grupo of gruposEvaluacion" >{{grupo.nomGrupoEvaluacion.charAt(0)}}</button>
+  <button (click)="CargarIteraciones(grupo.cGrupoEvaluacion)" [ngStyle]="{'background-color':colores[indice]}" class="btn btn-primary"  *ngFor="let grupo of gruposEvaluacion;let indice=index" >{{grupo.nomGrupoEvaluacion.charAt(0)}}</button>
 <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#form-crear-grupo">+</button>
 </div>
 
@@ -81,12 +81,12 @@
       </div>
       <div class="modal-body">
         <div class="input-box">
-          <input type="text" placeholder="Ingrese el nombre">
+          <input [(ngModel)] = "grupoEvaluacionCreado.nomGrupoEvaluacion" type="text" placeholder="Ingrese el nombre">
         </div>
       </div>
       <div class="modal-footer" style="border: none;padding-top:40px; ">
-        <button type="button" class="btn-aceptar" style="margin-right: 20px;" >Continuar</button>
-        <button type="button" class="btn-cancelar" data-bs-dismiss="modal">Cancelar</button>
+        <button  class="btn-aceptar" style="margin-right: 20px;"  (click)="AgregarGrupo()">Continuar</button>
+        <button  class="btn-cancelar" data-bs-dismiss="modal">Cancelar</button>
       </div>
     </div>
   </div>

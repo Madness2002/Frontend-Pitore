@@ -4,6 +4,8 @@ import {GrupoEvaluacionService} from "../../services/grupoEvaluacion/grupo-evalu
 import {GrupoEvaluacion} from "../../entities/GrupoEvaluacion/grupo-evaluacion";
 import {Iteracion} from "../../entities/Iteracion/iteracion";
 import {IteracionService} from "../../services/IteracionService/iteracion.service";
+import {UserService} from "../../services/usuario/user.service";
+import {Usuario} from "../../entities/Usuario/usuario";
 
 @Component({
   selector: 'app-inicio',
@@ -14,17 +16,35 @@ export class InicioComponent implements OnInit{
   vOpciones?:boolean;
   vBuscador?:boolean;
   gruposEvaluacion: GrupoEvaluacion[];
-  grupoEvaluacion: GrupoEvaluacion
+  grupoEvaluacion: GrupoEvaluacion;
+  grupoEvaluacionCreado:GrupoEvaluacion = {} as GrupoEvaluacion;
   colores: string[] =[
 "#77dd77",
+    "#FFA477",
+    "#fdcae1",
+    "#84b6f4",
+    "#77dd77",
+    "#FFA477",
+    "#fdcae1",
+    "#84b6f4",
+    "#77dd77",
+    "#FFA477",
+    "#fdcae1",
+    "#84b6f4",
+    "#77dd77",
+    "#FFA477",
+    "#fdcae1",
+    "#84b6f4",
+    "#77dd77",
     "#FFA477",
     "#fdcae1",
     "#84b6f4"
   ];
 
   iteraciones: Iteracion[];
-
-  constructor(public router: Router, private  grupoEvaluacionService: GrupoEvaluacionService, private iteracionService: IteracionService) {
+  usuario:Usuario={} as Usuario;
+usuarioInsercion:Usuario;
+  constructor(public router: Router, private  grupoEvaluacionService: GrupoEvaluacionService, private iteracionService: IteracionService, private userService: UserService) {
 }
 
 
@@ -53,7 +73,7 @@ export class InicioComponent implements OnInit{
     this.ObtenerGruposEvaluacion();
   }
   private ObtenerGruposEvaluacion(){
-    this.grupoEvaluacionService.listar().subscribe(dato=>{this.gruposEvaluacion=dato})
+    this.userService.getCurrentUser().subscribe(dato=>{this.usuario=dato;this.gruposEvaluacion=this.usuario.grupos})
   }
 
   public CargarIteraciones(id:number){
@@ -62,5 +82,19 @@ export class InicioComponent implements OnInit{
      this.iteraciones= this.grupoEvaluacion.iteraciones})
   }
 
+public AgregarGrupo(){
+  this.usuarioInsercion= {} as Usuario;
+  this.usuarioInsercion.cusuario=this.usuario.cusuario;
+this.grupoEvaluacionCreado.usuario=this.usuarioInsercion;
+console.log(this.grupoEvaluacionCreado);
+ this.grupoEvaluacionService.añadirGrupoEvaluacion(this.grupoEvaluacionCreado).subscribe(dato=> {
+   console.log(dato);this.ObtenerGruposEvaluacion();
+ },(event:any)=>{
+   if(event.status=='success'){
+     //$("form-crear-grupo").modal('hide');
+   }
 
+
+ })
+}
 }

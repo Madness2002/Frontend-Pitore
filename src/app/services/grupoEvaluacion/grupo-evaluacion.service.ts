@@ -4,6 +4,7 @@ import {HttpClient} from "@angular/common/http";
 import baseUrl from "../security/helper";
 import {Observable} from "rxjs";
 import {GrupoEvaluacion} from "../../entities/GrupoEvaluacion/grupo-evaluacion";
+import {Usuario} from "../../entities/Usuario/usuario";
 
 @Injectable({
   providedIn: 'root'
@@ -25,5 +26,8 @@ public listar ():Observable<GrupoEvaluacion[]>{
     return this.httpClient.get<GrupoEvaluacion>(`${baseUrl}/grupoevaluacion/buscar/`+id);
   }
 
-
+  public añadirGrupoEvaluacion(grupo:GrupoEvaluacion){
+    grupo.dGrupoEvaluacion= new Date();
+    return this.httpClient.post<GrupoEvaluacion>(`${baseUrl}/grupoevaluacion/insert`,grupo);
+  }
 }
