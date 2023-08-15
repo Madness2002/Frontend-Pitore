@@ -37,7 +37,7 @@
               <td></td>
               <td></td>
               <td></td>
-              <td>  <button (click)=Validador() class="ico_3p"></button> <div class="opciones" *ngIf="GetValidador()==true"> <button class="ico_edit"></button> <button class="ico_eli"></button> </div></td>
+              <td>  <button (click)=Validador() class="ico_3p"></button> <div class="opciones" *ngIf="GetValidador()==true"> <button class="ico_edit" ></button> <button class="ico_eli" (click)=EliminarIteracion(iteracion.cIteracion)></button> </div></td>
             </tr>
             </tbody>
           </table>
@@ -60,11 +60,11 @@
       </div>
       <div class="modal-body">
         <div class="input-box" id="buscador">
-          <input type="text" placeholder="Ingrese el nombre">
+          <input [(ngModel)] = "iteracionCreada.nombIteracion" type="text" placeholder="Ingrese el nombre">
         </div>
       </div>
       <div class="modal-footer" style="border: none;padding-top:40px; ">
-        <button type="button" class="btn-aceptar" style="margin-right: 20px;" >Continuar</button>
+        <button type="button" class="btn-aceptar" style="margin-right: 20px;" data-bs-dismiss="modal" (click)="AgregarIteracion()">Continuar</button>
         <button type="button" class="btn-cancelar" data-bs-dismiss="modal">Cancelar</button>
       </div>
     </div>
@@ -85,7 +85,7 @@
         </div>
       </div>
       <div class="modal-footer" style="border: none;padding-top:40px; ">
-        <button  class="btn-aceptar" style="margin-right: 20px;"  (click)="AgregarGrupo()">Continuar</button>
+        <button  class="btn-aceptar" style="margin-right: 20px;"  (click)="AgregarGrupo()" data-bs-dismiss="modal">Continuar</button>
         <button  class="btn-cancelar" data-bs-dismiss="modal">Cancelar</button>
       </div>
     </div>

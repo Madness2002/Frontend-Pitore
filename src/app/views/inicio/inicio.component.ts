@@ -18,6 +18,7 @@ export class InicioComponent implements OnInit{
   gruposEvaluacion: GrupoEvaluacion[];
   grupoEvaluacion: GrupoEvaluacion;
   grupoEvaluacionCreado:GrupoEvaluacion = {} as GrupoEvaluacion;
+  iteracionCreada:Iteracion= {} as Iteracion;
   colores: string[] =[
 "#77dd77",
     "#FFA477",
@@ -44,7 +45,10 @@ export class InicioComponent implements OnInit{
   iteraciones: Iteracion[];
   usuario:Usuario={} as Usuario;
 usuarioInsercion:Usuario;
-  constructor(public router: Router, private  grupoEvaluacionService: GrupoEvaluacionService, private iteracionService: IteracionService, private userService: UserService) {
+  constructor(public router: Router,
+              private  grupoEvaluacionService: GrupoEvaluacionService,
+              private iteracionService: IteracionService,
+              private userService: UserService) {
 }
 
 
@@ -94,7 +98,15 @@ console.log(this.grupoEvaluacionCreado);
      //$("form-crear-grupo").modal('hide');
    }
 
-
  })
 }
+
+public AgregarIteracion(){
+      this.iteracionCreada.grupoEvaluacion=this.grupoEvaluacion;
+    this.iteracionService.añadirIteracion(this.iteracionCreada).subscribe(dato=>{this.CargarIteraciones(this.grupoEvaluacion.cGrupoEvaluacion);})
+}
+
+    public EliminarIteracion(id:number){
+        this.iteracionService.eliminarPorId(id).subscribe(any =>{ this.CargarIteraciones(this.grupoEvaluacion.cGrupoEvaluacion);});
+    }
 }
