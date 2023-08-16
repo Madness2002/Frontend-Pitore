@@ -15,6 +15,7 @@ import {Usuario} from "../../entities/Usuario/usuario";
 export class InicioComponent implements OnInit{
   vOpciones?:boolean;
   vBuscador?:boolean;
+  vOpcionesGrupo?:boolean;
   gruposEvaluacion: GrupoEvaluacion[];
   grupoEvaluacion: GrupoEvaluacion;
   grupoEvaluacionCreado:GrupoEvaluacion = {} as GrupoEvaluacion;
@@ -62,6 +63,13 @@ usuarioInsercion:Usuario;
   Validador(): void{
     this.vOpciones= !this.vOpciones;
   }
+  ValidadorOpcionesGrupo(): void{
+    this.vOpcionesGrupo= !this.vOpcionesGrupo;
+  }
+  GetValidadorOpcionesGrupo():boolean{
+    // @ts-ignore
+    return this.vOpcionesGrupo;
+  }
   GetValidador():boolean{
     // @ts-ignore
     return this.vOpciones;
@@ -107,6 +115,17 @@ public AgregarIteracion(){
 }
 
     public EliminarIteracion(id:number){
-        this.iteracionService.eliminarPorId(id).subscribe(any =>{ this.CargarIteraciones(this.grupoEvaluacion.cGrupoEvaluacion);});
+        this.iteracionService.eliminarPorId(id).subscribe(any =>{
+          this.CargarIteraciones(this.grupoEvaluacion.cGrupoEvaluacion);
+        });
     }
+
+  public EliminarGrupo(){
+    this.grupoEvaluacionService.eliminarPorId(this.grupoEvaluacion.cGrupoEvaluacion).subscribe(any =>{
+      this.ObtenerGruposEvaluacion();
+      this.ValidadorOpcionesGrupo();
+      window.location.reload();
+    });
+  }
+    //eliminarPorId
 }

@@ -6,7 +6,26 @@
 
 <div id="big-box">
   <div id="col1">
-    <div id="box-nombre-grupo"><p *ngIf="grupoEvaluacion==null">Crea un grupo de evaluación</p> <p *ngIf="grupoEvaluacion!=null">{{grupoEvaluacion.nomGrupoEvaluacion}}</p><div id="burbu-buscador" data-bs-toggle="modal" data-bs-target="#modal-buscador"></div>
+    <div id="box-nombre-grupo"><p *ngIf="grupoEvaluacion==null">Crea un grupo de evaluación</p>
+      <div  style="display: flex;align-items: center; justify-content: space-around;" *ngIf="grupoEvaluacion!=null">  <p >{{grupoEvaluacion.nomGrupoEvaluacion}}</p>  <button (click)="ValidadorOpcionesGrupo()" class="ico_fecha_abajo"></button></div>
+
+      <div *ngIf="GetValidadorOpcionesGrupo()" id="menu-perfil" >
+
+        <div class="filas">
+          <button  class="ico_archivo"></button>
+          <p>Archivos</p>
+        </div>
+        <div class="filas">
+          <button  class="ico_edit"></button>
+          <p>Editar nombre</p>
+        </div>
+        <div class="filas">
+          <button (click)="EliminarGrupo()" class="ico_eli"></button>
+          <p>Eliminar</p>
+        </div>
+
+      </div>
+      <div id="burbu-buscador" data-bs-toggle="modal" data-bs-target="#modal-buscador"></div>
     </div>
 
   </div>
@@ -22,7 +41,7 @@
           <table class="table" >
             <thead>
             <tr style="font-size: 15px;">
-              <th scope="col"></th>
+              <th scope="col" style="max-width: 30%;"></th>
               <th scope="col">Creado</th>
               <th scope="col">Nivel</th>
               <th scope="col">%</th>
@@ -33,7 +52,7 @@
             <tbody>
             <tr style="font-size: 12px;"  *ngFor="let iteracion of iteraciones">
               <th scope="row" style="display: flex;flex-direction: row;"> <div class="ico_iteracion"></div> <p >{{iteracion.nombIteracion}}</p></th>
-              <td>{{iteracion.dIteracion}}</td>
+              <td style="max-width: 30%;">{{iteracion.dIteracion}}</td>
               <td></td>
               <td></td>
               <td></td>

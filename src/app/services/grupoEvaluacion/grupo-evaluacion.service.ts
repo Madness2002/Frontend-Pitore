@@ -31,5 +31,7 @@ public listar ():Observable<GrupoEvaluacion[]>{
     return this.httpClient.post<GrupoEvaluacion>(`${baseUrl}/grupoevaluacion/insert`,grupo);
   }
 
-
+  public eliminarPorId (id:number){
+    return this.httpClient.delete(`${baseUrl}/grupoevaluacion/delete/`+id);
+  }
 }
