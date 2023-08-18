@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
 import { Router } from '@angular/router';
 import {GrupoEvaluacionService} from "../../services/grupoEvaluacion/grupo-evaluacion.service";
 import {GrupoEvaluacion} from "../../entities/GrupoEvaluacion/grupo-evaluacion";
@@ -6,6 +6,8 @@ import {Iteracion} from "../../entities/Iteracion/iteracion";
 import {IteracionService} from "../../services/IteracionService/iteracion.service";
 import {UserService} from "../../services/usuario/user.service";
 import {Usuario} from "../../entities/Usuario/usuario";
+import {Menu2Component} from "../menu2/menu2.component";
+import {filter, max, min} from "rxjs";
 
 @Component({
   selector: 'app-inicio',
@@ -42,16 +44,20 @@ export class InicioComponent implements OnInit{
     "#fdcae1",
     "#84b6f4"
   ];
-
   iteraciones: Iteracion[];
   usuario:Usuario={} as Usuario;
 usuarioInsercion:Usuario;
+buscador:string;
   constructor(public router: Router,
               private  grupoEvaluacionService: GrupoEvaluacionService,
               private iteracionService: IteracionService,
               private userService: UserService) {
 }
 
+    procesaPropagar(mensaje:any) {
+    console.log(mensaje);
+        this.buscador=mensaje;
+    }
 
   random(min:number, max:number) {
     return Math.floor((Math.random() * (max - min + 1)) + min);
@@ -127,5 +133,7 @@ public AgregarIteracion(){
       window.location.reload();
     });
   }
-    //eliminarPorId
+
+
+
 }

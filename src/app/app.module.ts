@@ -12,6 +12,7 @@ import { Menu2Component } from './views/menu2/menu2.component';
 import {HttpClientModule} from "@angular/common/http";
 import {FormsModule} from "@angular/forms";
 import {authInterceptorProviders} from "./services/security/auth.interceptor";
+import { SearchIteracionPipe } from './services/search-iteracion.pipe';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import {authInterceptorProviders} from "./services/security/auth.interceptor";
     LandingPageComponent,
     RegisterComponent,
     InicioComponent,
-    Menu2Component
+    Menu2Component,
+    SearchIteracionPipe
   ],
     imports: [
         BrowserModule,

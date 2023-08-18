@@ -1,4 +1,4 @@
-<app-menu2></app-menu2>
+<app-menu2 (nombiteracionBuscar)="procesaPropagar($event)"></app-menu2>
 <div id="barra">
   <button (click)="CargarIteraciones(grupo.cGrupoEvaluacion)" [ngStyle]="{'background-color':colores[indice]}" class="btn btn-primary"  *ngFor="let grupo of gruposEvaluacion;let indice=index" >{{grupo.nomGrupoEvaluacion.charAt(0)}}</button>
 <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#form-crear-grupo">+</button>
@@ -32,7 +32,7 @@
   <div id="col2">
     <div id="box-crear-iteracion">
       <h2>Crear iteración</h2>
-      <button id="btn-crear-iteracion" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#form-crear-iteracion">+</button>
+      <button [disabled]="grupoEvaluacion==null? true : false" id="btn-crear-iteracion" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#form-crear-iteracion">+</button>
     </div>
     <div id="box-iteraciones">
       <h2>Iteraciones</h2>
@@ -50,7 +50,7 @@
             </tr>
             </thead>
             <tbody>
-            <tr style="font-size: 12px;"  *ngFor="let iteracion of iteraciones">
+            <tr style="font-size: 12px;"  *ngFor="let iteracion of iteraciones |  searchIteracion: buscador">
               <th scope="row" style="display: flex;flex-direction: row;"> <div class="ico_iteracion"></div> <p >{{iteracion.nombIteracion}}</p></th>
               <td style="max-width: 30%;">{{iteracion.dIteracion}}</td>
               <td></td>
@@ -119,7 +119,7 @@
       <div class="modal-body">
         <div class="input-box" id="buscador-modal" >
           <i id="logo-buscar" style="background-size: 13px;background-repeat: no-repeat;background-position: center;"></i>
-          <input type="text" placeholder="Buscar iteración">
+          <input [(ngModel)] = "buscador" type="text" placeholder="Buscar iteración">
         </div>
       </div>
 

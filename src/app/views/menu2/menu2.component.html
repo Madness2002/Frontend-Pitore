@@ -6,9 +6,9 @@
       <div id="logo"></div>
       <p id="nombre">Pítore</p>
     </div>
-    <div class="input-box" id="buscador">
+    <div (click)="PropagarNombreIteracion()" class="input-box" id="buscador">
       <i id="logo-buscar"></i>
-      <input type="text" placeholder="Buscar iteración">
+      <input  [(ngModel)] = "texto"  type="text" placeholder="Buscar iteración">
     </div>
     <div id="burbu-perfil" class="cir-perfil" (click)=Validador()>
       <div *ngIf="GetValidador()==true" id="menu-perfil" >
