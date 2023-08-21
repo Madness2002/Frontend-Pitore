@@ -1,0 +1,27 @@
+<app-menu3></app-menu3>
+<div id="barra">
+  <button (click)="CargarIteraciones(grupo.cGrupoEvaluacion)" [ngStyle]="{'background-color':colores[indice]}" class="btn btn-primary"  *ngFor="let grupo of gruposEvaluacion;let indice=index" >{{grupo.nomGrupoEvaluacion.charAt(0)}}</button>
+  <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#form-crear-grupo">+</button>
+</div>
+
+
+<div id="mini-main" style="height: 100vh; vertical-align: middle;">
+<div style="width: 731px;justify-content: center;display: flex; flex-direction: column; height: 70%;">
+<div id="nombre-iteracion"> <p>Iteracion 1</p></div>
+<div id="big-box">
+
+  <div id="opciones">
+    <div id="retroceder"></div>
+    <div id="salir"></div>
+  </div>
+<p id="texto-pregunta">1. ¿El chatbot detecta la depresión en base a emociones y los pensamientos asociados a ella?</p>
+
+  <div class="modal-footer" style="border: none;padding-top:80px; ">
+    <button  class="btn-aceptar" style="margin-right: 20px;"  >Sí</button>
+    <button  class="btn-cancelar" >No</button>
+  </div>
+</div>
+
+
+</div>
+</div>

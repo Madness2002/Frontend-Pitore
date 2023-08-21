@@ -34,4 +34,8 @@ public listar ():Observable<GrupoEvaluacion[]>{
   public eliminarPorId (id:number){
     return this.httpClient.delete(`${baseUrl}/grupoevaluacion/delete/`+id);
   }
+
+  public editarGrupoEvaluacion (grupo:GrupoEvaluacion){
+    return this.httpClient.put(`${baseUrl}/grupoevaluacion/update/`+grupo.cGrupoEvaluacion,grupo);
+  }
 }

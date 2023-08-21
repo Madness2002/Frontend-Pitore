@@ -18,8 +18,8 @@ public listar ():Observable<Iteracion[]>{
   return this.httpClient.get<Iteracion[]>(`${baseUrl}/iteracion/list`);
 }
 
-public listarPorId (id:number):Observable<Iteracion[]>{
-  return this.httpClient.get<Iteracion[]>(`${baseUrl}/iteracion/buscar/`+id);
+public listarPorId (id:number):Observable<Iteracion>{
+  return this.httpClient.get<Iteracion>(`${baseUrl}/iteracion/buscar/`+id);
 }
 
   public añadirIteracion(iteracion:Iteracion){
@@ -30,4 +30,9 @@ public listarPorId (id:number):Observable<Iteracion[]>{
   public eliminarPorId (id:number){
     return this.httpClient.delete(`${baseUrl}/iteracion/delete/`+id);
   }
+
+  public editarIteracion (iteracion:Iteracion){
+    return this.httpClient.put(`${baseUrl}/iteracion/update/`+iteracion.cIteracion,iteracion);
+  }
+
 }

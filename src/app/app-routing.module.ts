@@ -5,7 +5,13 @@ import { LandingPageComponent } from './views/landing-page/landing-page.componen
 import { LoginComponent } from './views/login/login.component';
 import { RegisterComponent } from './views/register/register.component';
 import {UsuarioGuard} from "./Guards/usuario.guard";
+import {CuestionarioComponent} from "./views/cuestionario/cuestionario.component";
 const routes: Routes = [
+  {
+    path:'cuestionario',
+    component:CuestionarioComponent,
+    canActivate:[UsuarioGuard]
+  },
   {
     path:'inicio',
     component:InicioComponent,

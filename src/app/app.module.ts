@@ -13,6 +13,8 @@ import {HttpClientModule} from "@angular/common/http";
 import {FormsModule} from "@angular/forms";
 import {authInterceptorProviders} from "./services/security/auth.interceptor";
 import { SearchIteracionPipe } from './services/search-iteracion.pipe';
+import { CuestionarioComponent } from './views/cuestionario/cuestionario.component';
+import { Menu3Component } from './views/menu3/menu3.component';
 
 
 @NgModule({
@@ -24,7 +26,9 @@ import { SearchIteracionPipe } from './services/search-iteracion.pipe';
     RegisterComponent,
     InicioComponent,
     Menu2Component,
-    SearchIteracionPipe
+    SearchIteracionPipe,
+    CuestionarioComponent,
+    Menu3Component
   ],
     imports: [
         BrowserModule,

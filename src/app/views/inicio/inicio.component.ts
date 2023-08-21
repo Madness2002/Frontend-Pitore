@@ -21,7 +21,9 @@ export class InicioComponent implements OnInit{
   gruposEvaluacion: GrupoEvaluacion[];
   grupoEvaluacion: GrupoEvaluacion;
   grupoEvaluacionCreado:GrupoEvaluacion = {} as GrupoEvaluacion;
+  grupoEvaluacionEditado:GrupoEvaluacion = {} as GrupoEvaluacion;
   iteracionCreada:Iteracion= {} as Iteracion;
+  iteracionEditada:Iteracion= {} as Iteracion;
   colores: string[] =[
 "#77dd77",
     "#FFA477",
@@ -97,6 +99,7 @@ buscador:string;
   public CargarIteraciones(id:number){
    this.grupoEvaluacionService.listarPorId(id).subscribe(dato=>{
     this.grupoEvaluacion = dato;
+    this.grupoEvaluacionEditado=dato;
      this.iteraciones= this.grupoEvaluacion.iteraciones})
   }
 
@@ -134,6 +137,24 @@ public AgregarIteracion(){
     });
   }
 
+  public EditarGrupo(){
+    this.grupoEvaluacionService.editarGrupoEvaluacion(this.grupoEvaluacionEditado).subscribe(any =>{
+      this.ObtenerGruposEvaluacion();
+      this.ValidadorOpcionesGrupo();
+    });
+  }
 
+  public EditarIteracion(){
+    this.iteracionService.editarIteracion(this.iteracionEditada).subscribe(any =>{
+      this.CargarIteraciones(this.grupoEvaluacion.cGrupoEvaluacion);
+    });
+  }
+
+  public CargarIteracionEditada(id:number){
+    this.iteracionService.listarPorId(id).subscribe(dato=>{
+      this.iteracionEditada=dato;
+    })
+
+}
 
 }

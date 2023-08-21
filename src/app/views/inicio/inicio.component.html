@@ -16,7 +16,7 @@
           <p>Archivos</p>
         </div>
         <div class="filas">
-          <button  class="ico_edit"></button>
+          <button data-bs-toggle="modal" data-bs-target="#form-editar-grupo" class="ico_edit"></button>
           <p>Editar nombre</p>
         </div>
         <div class="filas">
@@ -51,12 +51,12 @@
             </thead>
             <tbody>
             <tr style="font-size: 12px;"  *ngFor="let iteracion of iteraciones |  searchIteracion: buscador">
-              <th scope="row" style="display: flex;flex-direction: row;"> <div class="ico_iteracion"></div> <p >{{iteracion.nombIteracion}}</p></th>
+              <th  scope="row" style="display: flex;flex-direction: row;"> <div class="ico_iteracion"></div> <p  data-bs-toggle="modal" data-bs-target="#form-iniciar-iteracion" >{{iteracion.nombIteracion}}</p></th>
               <td style="max-width: 30%;">{{iteracion.dIteracion}}</td>
               <td></td>
               <td></td>
               <td></td>
-              <td>  <button (click)=Validador() class="ico_3p"></button> <div class="opciones" *ngIf="GetValidador()==true"> <button class="ico_edit" ></button> <button class="ico_eli" (click)=EliminarIteracion(iteracion.cIteracion)></button> </div></td>
+              <td>  <button (click)=Validador();CargarIteracionEditada(iteracion.cIteracion) class="ico_3p"></button> <div class="opciones" *ngIf="GetValidador()==true"> <button data-bs-toggle="modal" data-bs-target="#form-editar-iteracion" class="ico_edit" ></button> <button class="ico_eli" (click)=EliminarIteracion(iteracion.cIteracion)></button> </div></td>
             </tr>
             </tbody>
           </table>
@@ -69,7 +69,7 @@
   </div>
 </div>
 
-<!-- Modal -->
+<!-- Modal crear iteracion-->
 <div class="modal fade" id="form-crear-iteracion" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
@@ -78,7 +78,7 @@
         <p style="font-size: 14px;padding-top: 5px;">Ingrese el nombre de la iteración</p>
       </div>
       <div class="modal-body">
-        <div class="input-box" id="buscador">
+        <div class="input-box">
           <input [(ngModel)] = "iteracionCreada.nombIteracion" type="text" placeholder="Ingrese el nombre">
         </div>
       </div>
@@ -90,7 +90,28 @@
   </div>
 </div>
 
-<!-- Modal -->
+<!-- Modal editar iteracion-->
+<div class="modal fade" id="form-editar-iteracion" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header" style="display: flex;flex-direction: column;align-items: start;border: none;padding-top: 30px;">
+        <h5 class="modal-title" >Editar iteración</h5>
+        <p style="font-size: 14px;padding-top: 5px;">Ingrese el nombre de la iteración</p>
+      </div>
+      <div class="modal-body">
+        <div class="input-box">
+          <input [(ngModel)] = "iteracionEditada.nombIteracion" type="text" placeholder="Ingrese el nombre">
+        </div>
+      </div>
+      <div class="modal-footer" style="border: none;padding-top:40px; ">
+        <button type="button" class="btn-aceptar" style="margin-right: 20px;" data-bs-dismiss="modal" (click)="EditarIteracion()">Continuar</button>
+        <button type="button" class="btn-cancelar" data-bs-dismiss="modal">Cancelar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Crear Grupo de evaluacion-->
 <div class="modal fade" id="form-crear-grupo" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content" >
@@ -111,7 +132,28 @@
   </div>
 </div>
 
-<!-- Modal -->
+<!-- Modal Editar Grupo de evaluacion-->
+<div class="modal fade" id="form-editar-grupo" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content" >
+      <div class="modal-header" style="display: flex;flex-direction: column;align-items: start;border: none;padding-top: 30px;">
+        <h5 class="modal-title" >Editar Grupo</h5>
+        <p style="font-size: 14px;padding-top: 5px;font-style: normal;width: 62%;">Ingrese el nuevo nombre del grupo de evaluación</p>
+      </div>
+      <div class="modal-body">
+        <div class="input-box">
+          <input [(ngModel)] = "grupoEvaluacionEditado.nomGrupoEvaluacion" type="text" placeholder="Ingrese el nombre">
+        </div>
+      </div>
+      <div class="modal-footer" style="border: none;padding-top:40px; ">
+        <button  class="btn-aceptar" style="margin-right: 20px;"  (click)="EditarGrupo()" data-bs-dismiss="modal">Continuar</button>
+        <button  class="btn-cancelar" data-bs-dismiss="modal">Cancelar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Buscador -->
 <div class="modal fade" id="modal-buscador" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -126,3 +168,22 @@
     </div>
   </div>
 </div>
+
+
+<!-- Modal iniciar iteracion -->
+<div class="modal fade" id="form-iniciar-iteracion" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header" style="display: flex;flex-direction: column;align-items: start;border: none;padding-top: 30px;">
+        <h5 class="modal-title" >Iniciar iteración</h5>
+        <p style="font-size: 14px;padding-top: 5px;">Inicie el proceso de evaluación</p>
+      </div>
+
+      <div class="modal-footer" style="border: none;padding-top:40px; ">
+        <button type="button" class="btn-aceptar" style="margin-right: 20px;" data-bs-dismiss="modal"  (click)="IrA('cuestionario')" >Iniciar</button>
+        <button type="button" class="btn-cancelar" data-bs-dismiss="modal">Cancelar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
