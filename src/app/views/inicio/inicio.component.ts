@@ -15,17 +15,17 @@ import {filter, max, min} from "rxjs";
   styleUrls: ['./inicio.component.css']
 })
 export class InicioComponent implements OnInit{
+  vGoCuestionario?:boolean;
   vOpciones?:boolean;
   vBuscador?:boolean;
   vOpcionesGrupo?:boolean;
-  gruposEvaluacion: GrupoEvaluacion[];
   grupoEvaluacion: GrupoEvaluacion;
-  grupoEvaluacionCreado:GrupoEvaluacion = {} as GrupoEvaluacion;
-  grupoEvaluacionEditado:GrupoEvaluacion = {} as GrupoEvaluacion;
-  iteracionCreada:Iteracion= {} as Iteracion;
-  iteracionEditada:Iteracion= {} as Iteracion;
+  usuario:Usuario={} as Usuario;
+  usuarioInsercion:Usuario;
+  //arrays
+  gruposEvaluacion: GrupoEvaluacion[];
   colores: string[] =[
-"#77dd77",
+    "#77dd77",
     "#FFA477",
     "#fdcae1",
     "#84b6f4",
@@ -47,8 +47,15 @@ export class InicioComponent implements OnInit{
     "#84b6f4"
   ];
   iteraciones: Iteracion[];
-  usuario:Usuario={} as Usuario;
-usuarioInsercion:Usuario;
+  //crear
+  grupoEvaluacionCreado:GrupoEvaluacion = {} as GrupoEvaluacion;
+  iteracionCreada:Iteracion= {} as Iteracion;
+//editados
+  iteracionEditada:Iteracion= {} as Iteracion;
+  grupoEvaluacionEditado:GrupoEvaluacion = {} as GrupoEvaluacion;
+//Envio a componentes
+  iteracionEnviada:Iteracion = {} as Iteracion;
+
 buscador:string;
   constructor(public router: Router,
               private  grupoEvaluacionService: GrupoEvaluacionService,
@@ -56,10 +63,22 @@ buscador:string;
               private userService: UserService) {
 }
 
+EnviarIteracion(id: number){
+    this.iteracionService.listarPorId(id).subscribe(dato=>{
+      this.iteracionEnviada=dato;
+    });
+
+}
+
     procesaPropagar(mensaje:any) {
     console.log(mensaje);
         this.buscador=mensaje;
     }
+
+  procesaValidadorCuestionario(mensaje:any) {
+
+    this.ValidadorGoCuestionario();
+  }
 
   random(min:number, max:number) {
     return Math.floor((Math.random() * (max - min + 1)) + min);
@@ -82,6 +101,11 @@ buscador:string;
     // @ts-ignore
     return this.vOpciones;
   }
+
+  ValidadorGoCuestionario(){
+    this.vGoCuestionario=!this.vGoCuestionario;
+
+  }
   ValidadorBuscador(): void{
     this.vBuscador= !this.vBuscador;
   }
@@ -91,6 +115,7 @@ buscador:string;
   }
   ngOnInit(): void {
     this.ObtenerGruposEvaluacion();
+
   }
   private ObtenerGruposEvaluacion(){
     this.userService.getCurrentUser().subscribe(dato=>{this.usuario=dato;this.gruposEvaluacion=this.usuario.grupos})

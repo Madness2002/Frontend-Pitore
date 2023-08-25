@@ -1,10 +1,12 @@
-<app-menu2 (nombiteracionBuscar)="procesaPropagar($event)"></app-menu2>
+<app-menu2 (nombiteracionBuscar)="procesaPropagar($event)" *ngIf="!vGoCuestionario"></app-menu2>
+<app-menu3  (vGoCuestionario)="procesaValidadorCuestionario($event)" *ngIf="vGoCuestionario"></app-menu3>
+
 <div id="barra">
   <button (click)="CargarIteraciones(grupo.cGrupoEvaluacion)" [ngStyle]="{'background-color':colores[indice]}" class="btn btn-primary"  *ngFor="let grupo of gruposEvaluacion;let indice=index" >{{grupo.nomGrupoEvaluacion.charAt(0)}}</button>
 <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#form-crear-grupo">+</button>
 </div>
-
-<div id="big-box">
+<app-cuestionario  [iteracion]="iteracionEnviada" *ngIf="vGoCuestionario"></app-cuestionario>
+<div id="big-box" *ngIf="!vGoCuestionario">
   <div id="col1">
     <div id="box-nombre-grupo"><p *ngIf="grupoEvaluacion==null">Crea un grupo de evaluación</p>
       <div  style="display: flex;align-items: center; justify-content: space-around;" *ngIf="grupoEvaluacion!=null">  <p >{{grupoEvaluacion.nomGrupoEvaluacion}}</p>  <button (click)="ValidadorOpcionesGrupo()" class="ico_fecha_abajo"></button></div>
@@ -51,7 +53,7 @@
             </thead>
             <tbody>
             <tr style="font-size: 12px;"  *ngFor="let iteracion of iteraciones |  searchIteracion: buscador">
-              <th  scope="row" style="display: flex;flex-direction: row;"> <div class="ico_iteracion"></div> <p  data-bs-toggle="modal" data-bs-target="#form-iniciar-iteracion" >{{iteracion.nombIteracion}}</p></th>
+              <th  scope="row" style="display: flex;flex-direction: row;"> <div class="ico_iteracion"></div> <p  data-bs-toggle="modal" data-bs-target="#form-iniciar-iteracion" (click)="EnviarIteracion(iteracion.cIteracion)" >{{iteracion.nombIteracion}}</p></th>
               <td style="max-width: 30%;">{{iteracion.dIteracion}}</td>
               <td></td>
               <td></td>
@@ -180,7 +182,7 @@
       </div>
 
       <div class="modal-footer" style="border: none;padding-top:40px; ">
-        <button type="button" class="btn-aceptar" style="margin-right: 20px;" data-bs-dismiss="modal"  (click)="IrA('cuestionario')" >Iniciar</button>
+        <button type="button" class="btn-aceptar" style="margin-right: 20px;" data-bs-dismiss="modal"  (click)="ValidadorGoCuestionario()" >Iniciar</button>
         <button type="button" class="btn-cancelar" data-bs-dismiss="modal">Cancelar</button>
       </div>
     </div>

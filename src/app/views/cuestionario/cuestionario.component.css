@@ -12,6 +12,13 @@ padding-bottom: 40px;
   background: url("~../../../img/retroceder.png");
   border: none;
   background-size: 100%;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+#retroceder:hover{
+  transform: scale(1.1);
+  transition: 0.2s;
 }
 
 #salir{
@@ -21,6 +28,13 @@ padding-bottom: 40px;
   background: url("~../../../img/cancelar.png");
   border: none;
   background-size: 100%;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+#salir:hover{
+ transform: scale(1.1);
+  transition: 0.2s;
 }
 
 #barra{
@@ -59,7 +73,7 @@ padding-bottom: 40px;
   font-family: Inter;
   font-size: 23px;
   font-style: normal;
-  font-weight: 500;
+  font-weight: 600;
   line-height: normal;
 }
 .modal-footer{
@@ -99,12 +113,11 @@ display: flex;
   border: none;
   text-align: center;
   align-items: center;
-
   font-size: 18px;
   width: 20%;
   height: 40px;
   align-self: center;
-  transition: 1s;
+  transition: 0.4s;
   color: white;
 }
 .btn-primary{
@@ -116,4 +129,35 @@ display: flex;
   color: black;
   font-size: 18px;
   font-weight: bold;
+}
+
+.btn-aceptar:hover{
+  transform: scale(1.1);
+}
+
+#box{
+  width: 731px;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  height: 70%;
+}
+@media (max-width: 830px){
+
+  #box{
+    width: 500px;
+
+  }
+}
+
+
+@media (max-width: 620px){
+
+  #box{
+    width: 400px;
+  }
+
+  #box p{
+    font-size: 20px;
+  }
 }
