@@ -1,3 +1,51 @@
+.modal-footer3{
+
+  margin-top: 40px;
+}
+
+
+.input-box{
+  transition: 0.3s;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  width: 32.5vw;
+  max-width: 50%;
+  min-width: 30%;
+  height: 36px;
+  margin-right: 100px;
+  border-radius: 5px;
+  border-bottom: 3px ridge #0097A2;
+  border-left: 1px ridge #0097A2;
+  border-right: 1px ridge #0097A2;
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.20);
+}
+.input-box input{
+  border: none;
+  margin-left:12px;
+  background-color: transparent;
+  width: 100%;
+  font-size: 14px;
+
+}
+
+.modal-footer2{
+  display: flex;
+  flex-wrap: wrap;
+}
+.modal-footer2 .btn-aceptar{
+  width: 194px;
+  height: 17px;
+  color: #FFF;
+  text-align: center;
+  font-family: "Inter";
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  margin: 11px !important;
+}
+
 #opciones{
   display: flex;
   flex-direction: row;

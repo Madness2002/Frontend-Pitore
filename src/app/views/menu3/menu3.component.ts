@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Output} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {Router} from "@angular/router";
 import {UserService} from "../../services/usuario/user.service";
 
@@ -11,6 +11,8 @@ export class Menu3Component {
   @Output()
   vGoCuestionario: EventEmitter<string>= new EventEmitter<string>();
   vMenuUsuario?:boolean;
+  @Input()
+indiceSend:number;
 
   constructor(public router: Router,private userService:UserService) {
   }

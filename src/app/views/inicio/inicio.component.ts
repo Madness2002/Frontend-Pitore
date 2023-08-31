@@ -15,6 +15,7 @@ import {filter, max, min} from "rxjs";
   styleUrls: ['./inicio.component.css']
 })
 export class InicioComponent implements OnInit{
+indiceSend:number=0;
   vGoCuestionario?:boolean;
   vOpciones?:boolean;
   vBuscador?:boolean;
@@ -78,6 +79,11 @@ EnviarIteracion(id: number){
   procesaValidadorCuestionario(mensaje:any) {
 
     this.ValidadorGoCuestionario();
+  }
+
+  procesaIndiceSend(mensaje:any) {
+
+    this.indiceSend=mensaje;
   }
 
   random(min:number, max:number) {

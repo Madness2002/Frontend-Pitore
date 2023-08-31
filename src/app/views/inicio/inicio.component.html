@@ -1,11 +1,11 @@
 <app-menu2 (nombiteracionBuscar)="procesaPropagar($event)" *ngIf="!vGoCuestionario"></app-menu2>
-<app-menu3  (vGoCuestionario)="procesaValidadorCuestionario($event)" *ngIf="vGoCuestionario"></app-menu3>
+<app-menu3 [indiceSend]="indiceSend"  (vGoCuestionario)="procesaValidadorCuestionario($event)" *ngIf="vGoCuestionario"></app-menu3>
 
 <div id="barra">
   <button (click)="CargarIteraciones(grupo.cGrupoEvaluacion)" [ngStyle]="{'background-color':colores[indice]}" class="btn btn-primary"  *ngFor="let grupo of gruposEvaluacion;let indice=index" >{{grupo.nomGrupoEvaluacion.charAt(0)}}</button>
 <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#form-crear-grupo">+</button>
 </div>
-<app-cuestionario  [iteracion]="iteracionEnviada" *ngIf="vGoCuestionario"></app-cuestionario>
+<app-cuestionario  [iteracion]="iteracionEnviada" *ngIf="vGoCuestionario"  (indiceSend)="procesaIndiceSend($event)" ></app-cuestionario>
 <div id="big-box" *ngIf="!vGoCuestionario">
   <div id="col1">
     <div id="box-nombre-grupo"><p *ngIf="grupoEvaluacion==null">Crea un grupo de evaluación</p>

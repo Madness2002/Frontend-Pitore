@@ -2,6 +2,7 @@ import {Iteracion} from "../Iteracion/iteracion";
 import {Pregunta} from "../Pregunta/pregunta";
 
 
+
 export class DetallePregunta {
   private _cDetallePregunta: number;
   private _iteracion: Iteracion;
@@ -9,6 +10,17 @@ export class DetallePregunta {
   private _tRespuestaPregunta: number;
   private _dDetallePregunta: Date;
   private _fDetallePregunta: boolean;
+
+
+  constructor( iteracion: Iteracion, pregunta: Pregunta, tRespuestaPregunta: number, dDetallePregunta: Date, fDetallePregunta: boolean) {
+
+    this._iteracion = iteracion;
+    this._pregunta = pregunta;
+    this._tRespuestaPregunta = tRespuestaPregunta;
+    this._dDetallePregunta = dDetallePregunta;
+    this._fDetallePregunta = fDetallePregunta;
+  }
+
   get cDetallePregunta(): number {
     return this._cDetallePregunta;
   }

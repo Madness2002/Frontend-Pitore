@@ -7,7 +7,9 @@
         <p id="nombre">Pítore</p>
       </div>
       <div id="nombre-cuestionario">
-        <p >Idoneidad</p>
+        <p *ngIf="indiceSend<12" >Idoneidad</p>
+        <p *ngIf="indiceSend>=12&&indiceSend<30">Usabilidad</p>
+        <p *ngIf="indiceSend==30">Rendimiento</p>
       </div>
       <div id="burbu-perfil" class="cir-perfil" (click)=Validador()>
         <div *ngIf="GetValidador()==true" id="menu-perfil" >

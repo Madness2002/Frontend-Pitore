@@ -5,14 +5,36 @@
 <div id="big-box">
 
   <div id="opciones">
-    <div id="retroceder"></div>
+    <div id="retroceder" (click)="restarIndice()"></div>
     <div id="salir"></div>
   </div>
-<p id="texto-pregunta"> {{preguntas.at(indicePregunta).tPregunta}}  </p>
+<p id="texto-pregunta"> {{preguntas[indicePregunta].tPregunta}}  </p>
 
-  <div class="modal-footer" style="border: none;padding-top:80px; ">
-    <button  class="btn-aceptar" (click)="sumarIndice()" style="margin-right: 20px;"  >Sí</button>
-    <button  class="btn-cancelar" (click)="restarIndice()">No</button>
+  <div class="modal-footer" style="border: none;padding-top:80px; " *ngIf="indicePregunta<12">
+    <button  class="btn-aceptar" (click)="Responder(1)" style="margin-right: 20px;"   >Sí</button>
+    <button  class="btn-cancelar" (click)="Responder(0)" >No</button>
+  </div>
+
+  <div class="modal-footer2" style="border: none;padding-top:80px; " *ngIf="indicePregunta>=12&&indicePregunta<30">
+    <button  class="btn-aceptar" (click)="Responder(7)" style="margin-right: 20px;"  >Totalmente de acuerdo</button>
+    <button  class="btn-aceptar" (click)="Responder(6)">De acuerdo</button>
+    <button  class="btn-aceptar" (click)="Responder(5)" style="margin-right: 20px;"  >Moderadamente de acuerdo</button>
+    <button  class="btn-aceptar" (click)="Responder(4)">Ni de acuerdo ni en desacuerdo</button>
+    <button  class="btn-aceptar" (click)="Responder(3)" style="margin-right: 20px;"  >Moderadamente en desacuerdo</button>
+    <button  class="btn-aceptar" (click)="Responder(2)">En desacuerdo</button>
+    <button  class="btn-aceptar" (click)="Responder(1)" style="margin-right: 20px;"  >Totalmente en desacuerdo</button>
+  </div>
+
+  <div class="modal-footer3" style="border: none;padding-top:80px; " *ngIf="indicePregunta==30">
+
+    <div class="input-box" id="buscador">
+      <i id="logo-buscar"></i>
+      <input   type="text" placeholder="Buscar iteración">
+    </div>
+
+    <button  class="btn-aceptar" (click)="Responder(7)" style="margin-right: 20px;"  >Totalmente de acuerdo</button>
+
+
   </div>
 </div>
 </div>
