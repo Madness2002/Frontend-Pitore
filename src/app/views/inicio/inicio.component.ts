@@ -1,4 +1,13 @@
-import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
+import {
+  AfterViewInit,
+  booleanAttribute,
+  Component,
+  EventEmitter,
+  OnChanges,
+  OnInit,
+  SimpleChanges,
+  ViewChild
+} from '@angular/core';
 import { Router } from '@angular/router';
 import {GrupoEvaluacionService} from "../../services/grupoEvaluacion/grupo-evaluacion.service";
 import {GrupoEvaluacion} from "../../entities/GrupoEvaluacion/grupo-evaluacion";
@@ -7,7 +16,7 @@ import {IteracionService} from "../../services/IteracionService/iteracion.servic
 import {UserService} from "../../services/usuario/user.service";
 import {Usuario} from "../../entities/Usuario/usuario";
 import {Menu2Component} from "../menu2/menu2.component";
-import {filter, max, min} from "rxjs";
+
 
 @Component({
   selector: 'app-inicio',
@@ -15,45 +24,23 @@ import {filter, max, min} from "rxjs";
   styleUrls: ['./inicio.component.css']
 })
 export class InicioComponent implements OnInit{
-indiceSend:number=0;
-  vGoCuestionario?:boolean;
+
   vOpciones?:boolean;
   vBuscador?:boolean;
   vOpcionesGrupo?:boolean;
   grupoEvaluacion: GrupoEvaluacion;
   usuario:Usuario={} as Usuario;
-  usuarioInsercion:Usuario;
+  grupoEvaluacionEditado:GrupoEvaluacion = {} as GrupoEvaluacion;
   //arrays
-  gruposEvaluacion: GrupoEvaluacion[];
-  colores: string[] =[
-    "#77dd77",
-    "#FFA477",
-    "#fdcae1",
-    "#84b6f4",
-    "#77dd77",
-    "#FFA477",
-    "#fdcae1",
-    "#84b6f4",
-    "#77dd77",
-    "#FFA477",
-    "#fdcae1",
-    "#84b6f4",
-    "#77dd77",
-    "#FFA477",
-    "#fdcae1",
-    "#84b6f4",
-    "#77dd77",
-    "#FFA477",
-    "#fdcae1",
-    "#84b6f4"
-  ];
+
+
   iteraciones: Iteracion[];
   //crear
-  grupoEvaluacionCreado:GrupoEvaluacion = {} as GrupoEvaluacion;
+
   iteracionCreada:Iteracion= {} as Iteracion;
 //editados
   iteracionEditada:Iteracion= {} as Iteracion;
-  grupoEvaluacionEditado:GrupoEvaluacion = {} as GrupoEvaluacion;
+
 //Envio a componentes
   iteracionEnviada:Iteracion = {} as Iteracion;
 
@@ -68,7 +55,6 @@ EnviarIteracion(id: number){
     this.iteracionService.listarPorId(id).subscribe(dato=>{
       this.iteracionEnviada=dato;
     });
-
 }
 
     procesaPropagar(mensaje:any) {
@@ -76,15 +62,11 @@ EnviarIteracion(id: number){
         this.buscador=mensaje;
     }
 
-  procesaValidadorCuestionario(mensaje:any) {
-
-    this.ValidadorGoCuestionario();
-  }
-
-  procesaIndiceSend(mensaje:any) {
-
-    this.indiceSend=mensaje;
-  }
+recibirGrupo(mensaje:any){
+    this.grupoEvaluacion=mensaje;
+  this.grupoEvaluacionEditado=mensaje;
+this.CargarIteraciones(this.grupoEvaluacion.cGrupoEvaluacion);
+}
 
   random(min:number, max:number) {
     return Math.floor((Math.random() * (max - min + 1)) + min);
@@ -92,26 +74,21 @@ EnviarIteracion(id: number){
 
   IrA(url:string): void{
     this.router.navigate([url])
+    window.location.reload();
   }
   Validador(): void{
     this.vOpciones= !this.vOpciones;
   }
-  ValidadorOpcionesGrupo(): void{
-    this.vOpcionesGrupo= !this.vOpcionesGrupo;
-  }
-  GetValidadorOpcionesGrupo():boolean{
-    // @ts-ignore
-    return this.vOpcionesGrupo;
-  }
+
+
+
+
   GetValidador():boolean{
     // @ts-ignore
     return this.vOpciones;
   }
 
-  ValidadorGoCuestionario(){
-    this.vGoCuestionario=!this.vGoCuestionario;
 
-  }
   ValidadorBuscador(): void{
     this.vBuscador= !this.vBuscador;
   }
@@ -120,34 +97,38 @@ EnviarIteracion(id: number){
     return this.vBuscador;
   }
   ngOnInit(): void {
-    this.ObtenerGruposEvaluacion();
 
   }
-  private ObtenerGruposEvaluacion(){
-    this.userService.getCurrentUser().subscribe(dato=>{this.usuario=dato;this.gruposEvaluacion=this.usuario.grupos})
+  GetValidadorOpcionesGrupo():boolean{
+    // @ts-ignore
+    return this.vOpcionesGrupo;
+  }
+  public EliminarGrupo(){
+    this.grupoEvaluacionService.eliminarPorId(this.grupoEvaluacion.cGrupoEvaluacion).subscribe(any =>{
+    //  this.ObtenerGruposEvaluacion();
+      this.ValidadorOpcionesGrupo();
+      window.location.reload();
+    });
   }
 
+  public EditarGrupo(){
+    this.grupoEvaluacionService.editarGrupoEvaluacion(this.grupoEvaluacionEditado).subscribe(any =>{
+      this.ValidadorOpcionesGrupo();
+      this.grupoEvaluacionService.listarPorId(this.grupoEvaluacionEditado.cGrupoEvaluacion).subscribe(dato=>{
+        this.grupoEvaluacion=dato;
+      });
+    });
+
+  }
   public CargarIteraciones(id:number){
    this.grupoEvaluacionService.listarPorId(id).subscribe(dato=>{
     this.grupoEvaluacion = dato;
-    this.grupoEvaluacionEditado=dato;
      this.iteraciones= this.grupoEvaluacion.iteraciones})
   }
 
-public AgregarGrupo(){
-  this.usuarioInsercion= {} as Usuario;
-  this.usuarioInsercion.cusuario=this.usuario.cusuario;
-this.grupoEvaluacionCreado.usuario=this.usuarioInsercion;
-console.log(this.grupoEvaluacionCreado);
- this.grupoEvaluacionService.añadirGrupoEvaluacion(this.grupoEvaluacionCreado).subscribe(dato=> {
-   console.log(dato);this.ObtenerGruposEvaluacion();
- },(event:any)=>{
-   if(event.status=='success'){
-     //$("form-crear-grupo").modal('hide');
-   }
-
- })
-}
+  ValidadorOpcionesGrupo(): void{
+    this.vOpcionesGrupo= !this.vOpcionesGrupo;
+  }
 
 public AgregarIteracion(){
       this.iteracionCreada.grupoEvaluacion=this.grupoEvaluacion;
@@ -160,20 +141,7 @@ public AgregarIteracion(){
         });
     }
 
-  public EliminarGrupo(){
-    this.grupoEvaluacionService.eliminarPorId(this.grupoEvaluacion.cGrupoEvaluacion).subscribe(any =>{
-      this.ObtenerGruposEvaluacion();
-      this.ValidadorOpcionesGrupo();
-      window.location.reload();
-    });
-  }
 
-  public EditarGrupo(){
-    this.grupoEvaluacionService.editarGrupoEvaluacion(this.grupoEvaluacionEditado).subscribe(any =>{
-      this.ObtenerGruposEvaluacion();
-      this.ValidadorOpcionesGrupo();
-    });
-  }
 
   public EditarIteracion(){
     this.iteracionService.editarIteracion(this.iteracionEditada).subscribe(any =>{
@@ -187,5 +155,7 @@ public AgregarIteracion(){
     })
 
 }
+
+
 
 }

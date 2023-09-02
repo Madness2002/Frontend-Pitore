@@ -1,12 +1,8 @@
-<app-menu2 (nombiteracionBuscar)="procesaPropagar($event)" *ngIf="!vGoCuestionario"></app-menu2>
-<app-menu3 [indiceSend]="indiceSend"  (vGoCuestionario)="procesaValidadorCuestionario($event)" *ngIf="vGoCuestionario"></app-menu3>
+<app-menu2 (nombiteracionBuscar)="procesaPropagar($event)" ></app-menu2>
 
-<div id="barra">
-  <button (click)="CargarIteraciones(grupo.cGrupoEvaluacion)" [ngStyle]="{'background-color':colores[indice]}" class="btn btn-primary"  *ngFor="let grupo of gruposEvaluacion;let indice=index" >{{grupo.nomGrupoEvaluacion.charAt(0)}}</button>
-<button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#form-crear-grupo">+</button>
-</div>
-<app-cuestionario  [iteracion]="iteracionEnviada" *ngIf="vGoCuestionario"  (indiceSend)="procesaIndiceSend($event)" ></app-cuestionario>
-<div id="big-box" *ngIf="!vGoCuestionario">
+<app-barra    (grupoEvaluacionEventEmitter)="recibirGrupo($event)"></app-barra>
+
+<div id="big-box" >
   <div id="col1">
     <div id="box-nombre-grupo"><p *ngIf="grupoEvaluacion==null">Crea un grupo de evaluación</p>
       <div  style="display: flex;align-items: center; justify-content: space-around;" *ngIf="grupoEvaluacion!=null">  <p >{{grupoEvaluacion.nomGrupoEvaluacion}}</p>  <button (click)="ValidadorOpcionesGrupo()" class="ico_fecha_abajo"></button></div>
@@ -113,26 +109,6 @@
   </div>
 </div>
 
-<!-- Modal Crear Grupo de evaluacion-->
-<div class="modal fade" id="form-crear-grupo" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content" >
-      <div class="modal-header" style="display: flex;flex-direction: column;align-items: start;border: none;padding-top: 30px;">
-        <h5 class="modal-title" >Nuevo Grupo</h5>
-        <p style="font-size: 14px;padding-top: 5px;font-style: normal;width: 62%;">Ingrese el nombre del grupo de evaluación antes de crear sus iteraciones</p>
-      </div>
-      <div class="modal-body">
-        <div class="input-box">
-          <input [(ngModel)] = "grupoEvaluacionCreado.nomGrupoEvaluacion" type="text" placeholder="Ingrese el nombre">
-        </div>
-      </div>
-      <div class="modal-footer" style="border: none;padding-top:40px; ">
-        <button  class="btn-aceptar" style="margin-right: 20px;"  (click)="AgregarGrupo()" data-bs-dismiss="modal">Continuar</button>
-        <button  class="btn-cancelar" data-bs-dismiss="modal">Cancelar</button>
-      </div>
-    </div>
-  </div>
-</div>
 
 <!-- Modal Editar Grupo de evaluacion-->
 <div class="modal fade" id="form-editar-grupo" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -182,7 +158,7 @@
       </div>
 
       <div class="modal-footer" style="border: none;padding-top:40px; ">
-        <button type="button" class="btn-aceptar" style="margin-right: 20px;" data-bs-dismiss="modal"  (click)="ValidadorGoCuestionario()" >Iniciar</button>
+        <button type="button" class="btn-aceptar" style="margin-right: 20px;" data-bs-dismiss="modal"  [routerLink]="['/cuestionario',iteracionEnviada.cIteracion]" >Iniciar</button>
         <button type="button" class="btn-cancelar" data-bs-dismiss="modal">Cancelar</button>
       </div>
     </div>

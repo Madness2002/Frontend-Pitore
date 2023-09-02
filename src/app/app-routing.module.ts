@@ -6,9 +6,15 @@ import { LoginComponent } from './views/login/login.component';
 import { RegisterComponent } from './views/register/register.component';
 import {UsuarioGuard} from "./Guards/usuario.guard";
 import {CuestionarioComponent} from "./views/cuestionario/cuestionario.component";
+import {ResultadoComponent} from "./views/resultados/resultado/resultado.component";
 const routes: Routes = [
   {
-    path:'cuestionario',
+    path:'resultado',
+    component:ResultadoComponent,
+    canActivate:[UsuarioGuard]
+  },
+  {
+    path:'cuestionario/:id',
     component:CuestionarioComponent,
     canActivate:[UsuarioGuard]
   },

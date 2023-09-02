@@ -1,9 +1,22 @@
 .modal-footer3{
-
   margin-top: 40px;
 }
+.modal-footer3 .btn-aceptar{
+  margin-top: 30px;
+  margin-bottom: 30px;
+  color: #FFF;
+  text-align: center;
+  font-family: "Inter";
+  font-size: 23px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+ width: 128.415px;
+}
 
-
+.modal-footer3 .input-box input:focus {
+  outline: none;
+}
 .input-box{
   transition: 0.3s;
   display: flex;
@@ -32,6 +45,7 @@
 .modal-footer2{
   display: flex;
   flex-wrap: wrap;
+  margin-bottom: 30px;
 }
 .modal-footer2 .btn-aceptar{
   width: 194px;

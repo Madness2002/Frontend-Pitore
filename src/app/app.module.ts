@@ -15,6 +15,8 @@ import {authInterceptorProviders} from "./services/security/auth.interceptor";
 import { SearchIteracionPipe } from './services/search-iteracion.pipe';
 import { CuestionarioComponent } from './views/cuestionario/cuestionario.component';
 import { Menu3Component } from './views/menu3/menu3.component';
+import { ResultadoComponent } from './views/resultados/resultado/resultado.component';
+import { BarraComponent } from './views/barra/barra/barra.component';
 
 
 @NgModule({
@@ -28,7 +30,9 @@ import { Menu3Component } from './views/menu3/menu3.component';
     Menu2Component,
     SearchIteracionPipe,
     CuestionarioComponent,
-    Menu3Component
+    Menu3Component,
+    ResultadoComponent,
+    BarraComponent
   ],
     imports: [
         BrowserModule,

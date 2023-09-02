@@ -23,6 +23,7 @@ indiceSend:number;
   IrA(url:string): void{
 
     this.router.navigate([url])
+
   }
   Validador(): void{
 

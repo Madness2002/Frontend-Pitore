@@ -1,4 +1,5 @@
-
+<app-menu3 [indiceSend]="indiceSend" ></app-menu3>
+<app-barra   ></app-barra>
 <div id="mini-main" style="height: 100vh; vertical-align: middle;">
 <div id="box" >
 <div id="nombre-iteracion"> <p>{{iteracion.nombIteracion}}</p></div>
@@ -32,8 +33,7 @@
       <input   type="text" placeholder="Buscar iteración">
     </div>
 
-    <button  class="btn-aceptar" (click)="Responder(7)" style="margin-right: 20px;"  >Totalmente de acuerdo</button>
-
+    <button  class="btn-aceptar" (click)="Responder(7)">Terminar</button>
 
   </div>
 </div>
