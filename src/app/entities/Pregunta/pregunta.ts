@@ -6,6 +6,12 @@ export class Pregunta {
   private _cuestionario:Cuestionario;
 
 
+  constructor(cPregunta: number, tPregunta: string, cuestionario: Cuestionario) {
+    this._cPregunta = cPregunta;
+    this._tPregunta = tPregunta;
+    this._cuestionario = cuestionario;
+  }
+
   get cPregunta(): number {
     return this._cPregunta;
   }

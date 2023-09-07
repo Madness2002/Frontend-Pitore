@@ -9,7 +9,7 @@ import {CuestionarioComponent} from "./views/cuestionario/cuestionario.component
 import {ResultadoComponent} from "./views/resultados/resultado/resultado.component";
 const routes: Routes = [
   {
-    path:'resultado',
+    path:'resultado/:id',
     component:ResultadoComponent,
     canActivate:[UsuarioGuard]
   },

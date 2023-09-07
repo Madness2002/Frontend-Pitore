@@ -1,19 +1,20 @@
 import {Iteracion} from "../Iteracion/iteracion";
 import {Pregunta} from "../Pregunta/pregunta";
-
-
+// @ts-ignore
+import Date from "$GLOBAL$";
 
 export class DetallePregunta {
-  private _cDetallePregunta: number;
-  private _iteracion: Iteracion;
-  private _pregunta: Pregunta;
-  private _tRespuestaPregunta: number;
-  private _dDetallePregunta: Date;
-  private _fDetallePregunta: boolean;
+
+  private _cDetallePregunta:number;
+  private _iteracion:Iteracion;
+private _pregunta:Pregunta;
+  private _tRespuestaPregunta:number;
+  private _dDetallePregunta:Date;
+  private _fDetallePregunta:boolean;
 
 
-  constructor( iteracion: Iteracion, pregunta: Pregunta, tRespuestaPregunta: number, dDetallePregunta: Date, fDetallePregunta: boolean) {
 
+  constructor(iteracion: Iteracion, pregunta: Pregunta, tRespuestaPregunta: number, dDetallePregunta:Date, fDetallePregunta: boolean) {
     this._iteracion = iteracion;
     this._pregunta = pregunta;
     this._tRespuestaPregunta = tRespuestaPregunta;
@@ -23,6 +24,26 @@ export class DetallePregunta {
 
   get cDetallePregunta(): number {
     return this._cDetallePregunta;
+  }
+
+  set cDetallePregunta(value: number) {
+    this._cDetallePregunta = value;
+  }
+
+  get iteracion(): Iteracion {
+    return this._iteracion;
+  }
+
+  set iteracion(value: Iteracion) {
+    this._iteracion = value;
+  }
+
+  get pregunta(): Pregunta {
+    return this._pregunta;
+  }
+
+  set pregunta(value: Pregunta) {
+    this._pregunta = value;
   }
 
   get tRespuestaPregunta(): number {
@@ -47,25 +68,5 @@ export class DetallePregunta {
 
   set fDetallePregunta(value: boolean) {
     this._fDetallePregunta = value;
-  }
-
-  set cDetallePregunta(value: number) {
-    this._cDetallePregunta = value;
-  }
-
-  get iteracion(): Iteracion {
-    return this._iteracion;
-  }
-
-  set iteracion(value: Iteracion) {
-    this._iteracion = value;
-  }
-
-  get pregunta(): Pregunta {
-    return this._pregunta;
-  }
-
-  set pregunta(value: Pregunta) {
-    this._pregunta = value;
   }
 }

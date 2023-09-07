@@ -1,13 +1,13 @@
-<app-menu3 [indiceSend]="indiceSend" ></app-menu3>
-<app-barra   ></app-barra>
+<app-menu3 [indiceSend]="indicePregunta" ></app-menu3>
+<app-barra ></app-barra>
 <div id="mini-main" style="height: 100vh; vertical-align: middle;">
 <div id="box" >
-<div id="nombre-iteracion"> <p>{{iteracion.nombIteracion}}</p></div>
+<div id="nombre-iteracion"  > <p >{{iteracion.nombIteracion}}</p></div>
 <div id="big-box">
 
   <div id="opciones">
     <div id="retroceder" (click)="restarIndice()"></div>
-    <div id="salir"></div>
+    <div id="salir"(click)="detallePreguntaService.InsertarDetallePregunta(detallePreguntas[0]).subscribe()"></div>
   </div>
 <p id="texto-pregunta"> {{preguntas[indicePregunta].tPregunta}}  </p>
 
@@ -29,13 +29,29 @@
   <div class="modal-footer3" style="border: none;padding-top:80px; " *ngIf="indicePregunta==30">
 
     <div class="input-box" id="buscador">
-      <i id="logo-buscar"></i>
-      <input   type="text" placeholder="Buscar iteración">
+      <i id="logo-porcentaje"></i>
+      <input  [(ngModel)]="detallePreguntas[indicePregunta].tRespuestaPregunta" type="text" placeholder="AUC - ROC">
     </div>
 
-    <button  class="btn-aceptar" (click)="Responder(7)">Terminar</button>
+    <button  class="btn-aceptar" data-bs-toggle="modal" data-bs-target="#form-terminar-iteracion">Terminar</button>
 
   </div>
 </div>
 </div>
+</div>
+
+<!-- Modal iniciar iteracion -->
+<div class="modal fade" id="form-terminar-iteracion" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header" style="display: flex;flex-direction: column;align-items: start;border: none;padding-top: 30px;">
+        <h5 class="modal-title" >Terminar iteración</h5>
+        <p style="font-size: 14px;padding-top: 5px;">Terminar de registrar la iteración</p>
+      </div>
+      <div class="modal-footer" style="border: none;padding-top:40px; ">
+        <button type="button" class="btn-aceptar" style="margin-right: 20px;" data-bs-dismiss="modal" (click)="TerminarCuestionario()">Terminar</button>
+        <button type="button" class="btn-cancelar" data-bs-dismiss="modal">Aún no</button>
+      </div>
+    </div>
+  </div>
 </div>

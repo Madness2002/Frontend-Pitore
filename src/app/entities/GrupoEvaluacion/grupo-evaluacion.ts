@@ -1,5 +1,3 @@
-// @ts-ignore
-import Date from "$GLOBAL$";
 import {Iteracion} from "../Iteracion/iteracion";
 import {Usuario} from "../Usuario/usuario";
 

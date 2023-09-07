@@ -1,3 +1,12 @@
+
+#logo-porcentaje{
+  background-image: url("~../../../img/ico_porcentaje.png");
+  width: 27px;
+  height: 24px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
 .modal-footer3{
   margin-top: 40px;
 }

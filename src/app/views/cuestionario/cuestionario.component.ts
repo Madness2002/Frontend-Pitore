@@ -1,14 +1,14 @@
-import {booleanAttribute, Component, EventEmitter, Input, numberAttribute, OnInit, Output} from '@angular/core';
+import {Component, numberAttribute, OnInit} from '@angular/core';
 import {GrupoEvaluacion} from "../../entities/GrupoEvaluacion/grupo-evaluacion";
 import {Iteracion} from "../../entities/Iteracion/iteracion";
 import {Usuario} from "../../entities/Usuario/usuario";
 import {ActivatedRoute, Router} from "@angular/router";
-import {GrupoEvaluacionService} from "../../services/grupoEvaluacion/grupo-evaluacion.service";
 import {UserService} from "../../services/usuario/user.service";
 import {PreguntaService} from "../../services/pregunta/pregunta.service";
 import {Pregunta} from "../../entities/Pregunta/pregunta";
 import {DetallePregunta} from "../../entities/DetallePregunta/detalle-pregunta";
 import {IteracionService} from "../../services/IteracionService/iteracion.service";
+import {DetallePreguntaService} from "../../services/detallePregunta/detalle-pregunta.service";
 
 @Component({
   selector: 'app-cuestionario',
@@ -18,22 +18,23 @@ import {IteracionService} from "../../services/IteracionService/iteracion.servic
 export class CuestionarioComponent implements OnInit{
   indiceSend:number=0;
   gruposEvaluacion: GrupoEvaluacion[];
-  iteracion: Iteracion={} as Iteracion;
+ public iteracion: Iteracion={} as Iteracion;
   preguntas:Pregunta[]=[];
   indicePregunta:number=0;
-  detallePreguntas: DetallePregunta[]=[];
+  detallePreguntas: DetallePregunta[]=[] ;
   detallePregunta: DetallePregunta;
   usuario:Usuario={} as Usuario;
-
   constructor(public router: Router,public _router:ActivatedRoute,
               private  iteracionService: IteracionService,
-              private userService: UserService,   private preguntaService: PreguntaService) {
+              private userService: UserService,   private preguntaService: PreguntaService, public detallePreguntaService: DetallePreguntaService) {
   }
   ngOnInit(): void {
     this.ObtenerGruposEvaluacion();
   this.ObtenerPreguntas();
 let id=numberAttribute(this._router.snapshot.paramMap.get('id'));
       this.iteracionService.listarPorId(id).subscribe(dato=>{this.iteracion=dato;})
+    this.inicializarDetallePreguntas();
+
   }
 private inicializarDetallePreguntas(){
   this.preguntas.forEach(
@@ -50,7 +51,12 @@ private ObtenerPreguntas(){
     this.preguntaService.listar().subscribe(dato=>{this.preguntas=dato;this.inicializarDetallePreguntas();console.log(this.detallePreguntas);})
 }
 
-
+public TerminarCuestionario(){
+      this.detallePreguntas[this.indicePregunta].tRespuestaPregunta/=100;
+    this.detallePreguntas.forEach((pregunta)=>{
+       this.detallePreguntaService.InsertarDetallePregunta(pregunta).subscribe(eny=>{});
+   })
+}
 
 public Responder(respuesta: number){
     this.detallePreguntas[this.indicePregunta].tRespuestaPregunta=respuesta;
@@ -64,7 +70,6 @@ public Responder(respuesta: number){
       while (this.detallePreguntas[this.indicePregunta].fDetallePregunta==false){
         this.indicePregunta++;
       }
-
     }
 }
 

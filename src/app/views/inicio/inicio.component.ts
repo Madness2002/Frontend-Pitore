@@ -153,9 +153,5 @@ public AgregarIteracion(){
     this.iteracionService.listarPorId(id).subscribe(dato=>{
       this.iteracionEditada=dato;
     })
-
 }
-
-
-
 }

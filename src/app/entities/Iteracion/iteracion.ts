@@ -8,6 +8,14 @@ export class Iteracion {
   private _dIteracion:Date;
 private _grupoEvaluacion:GrupoEvaluacion;
 
+
+  constructor(cIteracion: number, nombIteracion: string, dIteracion: Date, grupoEvaluacion: GrupoEvaluacion) {
+    this._cIteracion = cIteracion;
+    this._nombIteracion = nombIteracion;
+    this._dIteracion = dIteracion;
+    this._grupoEvaluacion = grupoEvaluacion;
+  }
+
   get grupoEvaluacion(): GrupoEvaluacion {
     return this._grupoEvaluacion;
   }

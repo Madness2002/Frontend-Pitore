@@ -18,7 +18,7 @@ public listar ():Observable<Iteracion[]>{
   return this.httpClient.get<Iteracion[]>(`${baseUrl}/iteracion/list`);
 }
 
-public listarPorId (id:number):Observable<Iteracion>{
+public listarPorId (id:number){
   return this.httpClient.get<Iteracion>(`${baseUrl}/iteracion/buscar/`+id);
 }
 
