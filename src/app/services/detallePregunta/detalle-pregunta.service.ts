@@ -13,10 +13,14 @@ import {Pregunta} from "../../entities/Pregunta/pregunta";
 export class DetallePreguntaService {
   iteracion:Iteracion;
   pregunta:Pregunta;
-  detallePreguntas:DetallePregunta[]=[];
-  constructor(public router: Router,private httpClient: HttpClient) { }
-  public InsertarDetallePregunta(detallePregunta:DetallePregunta){
+  detallePreguntas:DetallePregunta[];
+  nominador:number= {} as number;
+  denominador:number= {} as number;
+  constructor(public router: Router,private httpClient: HttpClient) {
 
+  }
+  public InsertarDetallePregunta(detallePregunta:DetallePregunta){
+console.log(detallePregunta.iteracion);
     return this.httpClient.post<DetallePregunta>(`${baseUrl}/detalle/insert`,{
       iteracion:detallePregunta.iteracion,
       pregunta:detallePregunta.pregunta,
@@ -31,34 +35,52 @@ export class DetallePreguntaService {
   public listarPorIdIteracion (idIteracion:number):Observable<DetallePregunta[]>{
     return this.httpClient.get<DetallePregunta[]>(`${baseUrl}/detalle/list/`+idIteracion);
   }
+
+  public listarPorIdIteracionV2 (idIteracion:number){
+    this.httpClient.get<DetallePregunta[]>(`${baseUrl}/detalle/list/`+idIteracion);
+  }
   public listarPorId (id:number):Observable<DetallePregunta>{
     return this.httpClient.get<DetallePregunta>(`${baseUrl}/detalle/buscar/`+id);
   }
 
-  public cargarResultados(_idoneidad:number,_usabilidad:number,_rendimiento:number,_cIteracion:number){
+  public cargarResultadosIdoneidad(detallePreguntas:DetallePregunta[]) {
+      console.log(detallePreguntas);
+      this.nominador = 0.0;
+      this.denominador = 0.0;
+      //IDONEIDAD
+      for (let i = 0; i < 6; i++) {
+        this.denominador += detallePreguntas[i].tRespuestaPregunta;
+        console.log("nomidador:" + this.nominador);
+      }
 
-    this.listarPorIdIteracion(_cIteracion).subscribe(dato=>{this.detallePreguntas=dato;console.log(this.detallePreguntas);})
+      for (let i = 6; i < 12; i++) {
+        this.nominador += detallePreguntas[i].tRespuestaPregunta;
+        console.log("denomidador:" + this.denominador);
+      }
 
-    let nominador=0;
-    let denominador=0;
-    //IDONEIDAD
-    for (let i=0;i<6;i++)
-    {
-      nominador+=this.detallePreguntas[i].tRespuestaPregunta;
-    }
+      console.log("ARRIBA: " + (this.nominador));
+      console.log("ABAJO: " + (this.denominador));
+      console.log("RESULTADO: " + (this.nominador / this.denominador));
 
-    for (let i=6;i<12;i++)
-    {
-      denominador+=this.detallePreguntas[i].tRespuestaPregunta;
-    }
-    _idoneidad=(nominador/denominador)*100;
+    return numberAttribute((this.nominador / this.denominador)*100);
+  }
 
-    //USABILIDAD
+  public cargarResultadosUsabilidad(detallePreguntas:DetallePregunta[]):number{
+
+    let _usabilidad=0;
     for (let i=12;i<30;i++)
     {
-      _usabilidad+=(this.detallePreguntas[i].tRespuestaPregunta/(18*7))*100;
+      _usabilidad+=(detallePreguntas[i].tRespuestaPregunta/(18*7))*100;
     }
-    //RENDIMIENTO
-    _rendimiento=this.detallePreguntas[30].tRespuestaPregunta*100;
+return _usabilidad;
+  }
+
+  public GetNivelMadurez(indiceCalidad:number){
+    if (indiceCalidad<25)return 1;
+    else if (indiceCalidad>=25&&indiceCalidad<50) return 2;
+    else if (indiceCalidad>=50&&indiceCalidad<70)return 3;
+    else if (indiceCalidad>=70&&indiceCalidad<90)return 4;
+    else return 5;
   }
 }
+

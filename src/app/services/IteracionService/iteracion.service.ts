@@ -22,6 +22,10 @@ public listarPorId (id:number){
   return this.httpClient.get<Iteracion>(`${baseUrl}/iteracion/buscar/`+id);
 }
 
+  public listarPorGrupoEvaluacion (id:number){
+    return this.httpClient.get<Iteracion[]>(`${baseUrl}/iteracion/grupo/`+id);
+  }
+
   public añadirIteracion(iteracion:Iteracion){
     iteracion.dIteracion= new Date();
     return this.httpClient.post<Iteracion>(`${baseUrl}/iteracion/insert`,iteracion);

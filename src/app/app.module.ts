@@ -17,7 +17,9 @@ import { CuestionarioComponent } from './views/cuestionario/cuestionario.compone
 import { Menu3Component } from './views/menu3/menu3.component';
 import { ResultadoComponent } from './views/resultados/resultado/resultado.component';
 import { BarraComponent } from './views/barra/barra/barra.component';
-
+import {NgChartsModule} from "ng2-charts";
+import { ToastrModule } from 'ngx-toastr';
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 @NgModule({
   declarations: [
@@ -34,12 +36,15 @@ import { BarraComponent } from './views/barra/barra/barra.component';
     ResultadoComponent,
     BarraComponent
   ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        HttpClientModule,
-        FormsModule
-    ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
+    NgChartsModule,
+    ToastrModule.forRoot({}),
+    BrowserAnimationsModule
+  ],
   providers: [authInterceptorProviders],
   bootstrap: [AppComponent]
 })

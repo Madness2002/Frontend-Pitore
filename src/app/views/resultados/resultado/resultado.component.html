@@ -6,24 +6,24 @@
 
 <div class="metrica">
   <p style="font-size: 30px;">Calidad</p>
-<div class="card-p">67%</div>
+<div class="card-p">{{indiceCalidad.toFixed(0) +'%'}}</div>
 </div>
 
     <div class="metrica">
       <p>Idoneidad</p>
-      <div class="card">{{idoneidad +'%'}}</div>
+      <div class="card">{{idoneidad.toFixed(0) +'%'}}</div>
     </div>
 
 
     <div class="metrica">
       <p>Usabilidad</p>
-      <div class="card">67%</div>
+      <div class="card">{{usabilidad.toFixed(0) +'%'}}</div>
     </div>
 
 
     <div class="metrica">
       <p>Rendimiento</p>
-      <div class="card">67%</div>
+      <div class="card">{{rendimiento.toFixed(0) +'%'}}</div>
     </div>
 
 
@@ -35,20 +35,28 @@
       <div id="nivel-madurez">
 
         <p>Nivel de madurez</p>
-        <div id="card-nivel">3</div>
+        <div id="card-nivel">{{nivelMadurez}}</div>
       </div>
 
-      <div id="iteracion">Iteracion 1: status</div>
+      <div id="iteracion">{{iteracion.nombIteracion + ': status'}}</div>
 
     </div>
     <div id="col2">
 
-<div id="box-chart"></div>
+<div id="box-chart" style="display: flex;justify-content: center;vertical-align: middle;align-items: center;">
+  <canvas baseChart
+          [data]="barChartData"
+          [options]="barChartOptions"
+          [plugins]="barChartPlugins"
+          [legend]="barChartLegend"
+          [type]="'bar'">
+  </canvas>
+</div>
     </div>
   </div>
 
   <div id="fila3-main">
-    <button id="aceptar">Aceptar y regresar</button>
+    <button id="aceptar" (click)="IrA('/inicio')" >Aceptar y regresar</button>
   </div>
 
 </main>

@@ -5,7 +5,8 @@ import {Router} from "@angular/router";
 import {GrupoEvaluacionService} from "../../../services/grupoEvaluacion/grupo-evaluacion.service";
 import {IteracionService} from "../../../services/IteracionService/iteracion.service";
 import {UserService} from "../../../services/usuario/user.service";
-
+import Swall from "sweetalert2";
+import {ToasterService} from "../../../services/toaster.service";
 @Component({
   selector: 'app-barra',
   templateUrl: './barra.component.html',
@@ -46,7 +47,7 @@ grupoEvaluacionEventEmitter=new EventEmitter<GrupoEvaluacion>();
   constructor(public router: Router,
               private  grupoEvaluacionService: GrupoEvaluacionService,
               private iteracionService: IteracionService,
-              private userService: UserService) {
+              private userService: UserService,public toasterService: ToasterService) {
   }
   ngOnInit(): void {
     this.ObtenerGruposEvaluacion();
@@ -64,13 +65,13 @@ this.grupoEvaluacionEventEmitter.emit(grupoEnviado);
     this.usuarioInsercion.cusuario=this.usuario.cusuario;
     this.grupoEvaluacionCreado.usuario=this.usuarioInsercion;
     console.log(this.grupoEvaluacionCreado);
-    this.grupoEvaluacionService.añadirGrupoEvaluacion(this.grupoEvaluacionCreado).subscribe(dato=> {
-      console.log(dato);this.ObtenerGruposEvaluacion();
-    },(event:any)=>{
-      if(event.status=='success'){
-        //$("form-crear-grupo").modal('hide');
-      }
 
+    this.grupoEvaluacionService.añadirGrupoEvaluacion(this.grupoEvaluacionCreado).subscribe(dato=> {
+     this.ObtenerGruposEvaluacion();
+      this.toasterService.success("¡Grupo agregado!","Success")
+
+    },(event:any)=>{
+      this.toasterService.error(event,"Error")
     })
   }
 

@@ -16,6 +16,10 @@ import {IteracionService} from "../../services/IteracionService/iteracion.servic
 import {UserService} from "../../services/usuario/user.service";
 import {Usuario} from "../../entities/Usuario/usuario";
 import {Menu2Component} from "../menu2/menu2.component";
+import {DetallePregunta} from "../../entities/DetallePregunta/detalle-pregunta";
+import {DetallePreguntaService} from "../../services/detallePregunta/detalle-pregunta.service";
+import {async, empty, isEmpty, Observable} from "rxjs";
+import {ToasterService} from "../../services/toaster.service";
 
 
 @Component({
@@ -34,10 +38,10 @@ export class InicioComponent implements OnInit{
   //arrays
 
 
-  iteraciones: Iteracion[];
+  iteraciones: Iteracion[]=[];
   //crear
 
-  iteracionCreada:Iteracion= {} as Iteracion;
+  iteracionCreada:Iteracion= { } as Iteracion;
 //editados
   iteracionEditada:Iteracion= {} as Iteracion;
 
@@ -48,7 +52,8 @@ buscador:string;
   constructor(public router: Router,
               private  grupoEvaluacionService: GrupoEvaluacionService,
               private iteracionService: IteracionService,
-              private userService: UserService) {
+              private userService: UserService,public detallePreguntaService:DetallePreguntaService,public toasterService: ToasterService) {
+    this.iteracionCreada.fRespondido=false;
 }
 
 EnviarIteracion(id: number){
@@ -74,7 +79,6 @@ this.CargarIteraciones(this.grupoEvaluacion.cGrupoEvaluacion);
 
   IrA(url:string): void{
     this.router.navigate([url])
-    window.location.reload();
   }
   Validador(): void{
     this.vOpciones= !this.vOpciones;
@@ -110,20 +114,20 @@ this.CargarIteraciones(this.grupoEvaluacion.cGrupoEvaluacion);
       window.location.reload();
     });
   }
-
   public EditarGrupo(){
     this.grupoEvaluacionService.editarGrupoEvaluacion(this.grupoEvaluacionEditado).subscribe(any =>{
       this.ValidadorOpcionesGrupo();
       this.grupoEvaluacionService.listarPorId(this.grupoEvaluacionEditado.cGrupoEvaluacion).subscribe(dato=>{
         this.grupoEvaluacion=dato;
+        this.toasterService.success("¡Nombre modificado exitosamente!","Success");
+      },error => {
+        this.toasterService.error(error,"Error");
       });
     });
-
   }
   public CargarIteraciones(id:number){
-   this.grupoEvaluacionService.listarPorId(id).subscribe(dato=>{
-    this.grupoEvaluacion = dato;
-     this.iteraciones= this.grupoEvaluacion.iteraciones})
+   this.iteracionService.listarPorGrupoEvaluacion(id).subscribe(dato=>{
+     this.iteraciones= dato;})
   }
 
   ValidadorOpcionesGrupo(): void{
@@ -132,7 +136,15 @@ this.CargarIteraciones(this.grupoEvaluacion.cGrupoEvaluacion);
 
 public AgregarIteracion(){
       this.iteracionCreada.grupoEvaluacion=this.grupoEvaluacion;
-    this.iteracionService.añadirIteracion(this.iteracionCreada).subscribe(dato=>{this.CargarIteraciones(this.grupoEvaluacion.cGrupoEvaluacion);})
+    this.iteracionService.añadirIteracion(this.iteracionCreada).subscribe(
+        dato=>{
+      this.CargarIteraciones(this.grupoEvaluacion.cGrupoEvaluacion);
+          this.toasterService.success("¡Iteración creada exitosamente!","Success");
+    },error => {
+          this.toasterService.error("Nombre invalido","Error");
+        }
+
+    )
 }
 
     public EliminarIteracion(id:number){
@@ -146,6 +158,7 @@ public AgregarIteracion(){
   public EditarIteracion(){
     this.iteracionService.editarIteracion(this.iteracionEditada).subscribe(any =>{
       this.CargarIteraciones(this.grupoEvaluacion.cGrupoEvaluacion);
+      this.toasterService.success('¡Iteración editada!', 'Success');
     });
   }
 
@@ -154,4 +167,6 @@ public AgregarIteracion(){
       this.iteracionEditada=dato;
     })
 }
+
+
 }

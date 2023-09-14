@@ -32,8 +32,9 @@ export class CuestionarioComponent implements OnInit{
     this.ObtenerGruposEvaluacion();
   this.ObtenerPreguntas();
 let id=numberAttribute(this._router.snapshot.paramMap.get('id'));
-      this.iteracionService.listarPorId(id).subscribe(dato=>{this.iteracion=dato;})
-    this.inicializarDetallePreguntas();
+      this.iteracionService.listarPorId(id).subscribe(dato=>{this.iteracion=dato;
+        this.inicializarDetallePreguntas();})
+
 
   }
 private inicializarDetallePreguntas(){
@@ -53,11 +54,20 @@ private ObtenerPreguntas(){
 
 public TerminarCuestionario(){
       this.detallePreguntas[this.indicePregunta].tRespuestaPregunta/=100;
+      console.log(this.detallePreguntas[this.indicePregunta].tRespuestaPregunta);
     this.detallePreguntas.forEach((pregunta)=>{
-       this.detallePreguntaService.InsertarDetallePregunta(pregunta).subscribe(eny=>{});
+       this.detallePreguntaService.InsertarDetallePregunta(pregunta).subscribe(eny=>{
+       });
    })
+this.IrA("resultado/"+this.iteracion.cIteracion);
+
 }
 
+  IrA(url:string): void{
+
+    this.router.navigate([url])
+
+  }
 public Responder(respuesta: number){
     this.detallePreguntas[this.indicePregunta].tRespuestaPregunta=respuesta;
     if (this.indicePregunta>=0&&this.indicePregunta<=5){
