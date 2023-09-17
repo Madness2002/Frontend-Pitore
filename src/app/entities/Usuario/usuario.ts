@@ -7,6 +7,7 @@ export class Usuario {
   private _username:string;
   private _nomUsuario:string;
   private _password:string;
+  private _confirmPassword:string;
   private _imgUsuario:string;
   private _dUsuario:Date;
 private _grupos:GrupoEvaluacion[];
@@ -14,6 +15,14 @@ private _grupos:GrupoEvaluacion[];
 
   get grupos(): GrupoEvaluacion[] {
     return this._grupos;
+  }
+
+  get confirmPassword(): string {
+    return this._confirmPassword;
+  }
+
+  set confirmPassword(value: string) {
+    this._confirmPassword = value;
   }
 
   set grupos(value: GrupoEvaluacion[]) {

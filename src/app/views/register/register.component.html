@@ -6,20 +6,20 @@
 
       <div class="input-box" style="margin-bottom: 30px;">
         <i id="logo-usuario"></i>
-        <input [(ngModel)] = "usuario.username" type="text" placeholder="Usuario">
+        <input [(ngModel)] = "usuario.username" type="text" [minlength]="5" [maxLength]="50" placeholder="Usuario">
       </div>
       <div class="input-box" style="margin-bottom: 30px;">
         <i id="logo-nombre"></i>
-        <input [(ngModel)] = "usuario.nomUsuario" type="text" placeholder="Nombre">
+        <input [(ngModel)] = "usuario.nomUsuario" type="text" [maxLength]="50" placeholder="Nombre">
       </div>
 
       <div class="input-box" style="margin-bottom: 30px;">
         <i class="logo-contra"></i>
-        <input [(ngModel)] = "usuario.password" type="password" placeholder="Contraseña">
+        <input [(ngModel)] = "usuario.password" type="password" [maxLength]="50" placeholder="Contraseña">
       </div>
       <div class="input-box">
         <i class="logo-contra"></i>
-        <input  type="password" placeholder="Repetir contraseña">
+        <input  [(ngModel)] = "usuario.confirmPassword" type="password" placeholder="Repetir contraseña" [maxLength]="50">
       </div>
       <button id="iniciar" type="button" class="btn btn-primary" (click)=formSubmit()>Registrarse</button>
 

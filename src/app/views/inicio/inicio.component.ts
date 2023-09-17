@@ -115,6 +115,7 @@ this.CargarIteraciones(this.grupoEvaluacion.cGrupoEvaluacion);
     });
   }
   public EditarGrupo(){
+    if (this.grupoEvaluacionEditado.nomGrupoEvaluacion.trim()!=""||this.grupoEvaluacionEditado.nomGrupoEvaluacion.trim()!=null||this.grupoEvaluacionEditado.nomGrupoEvaluacion.trim()!=undefined){
     this.grupoEvaluacionService.editarGrupoEvaluacion(this.grupoEvaluacionEditado).subscribe(any =>{
       this.ValidadorOpcionesGrupo();
       this.grupoEvaluacionService.listarPorId(this.grupoEvaluacionEditado.cGrupoEvaluacion).subscribe(dato=>{
@@ -124,6 +125,9 @@ this.CargarIteraciones(this.grupoEvaluacion.cGrupoEvaluacion);
         this.toasterService.error(error,"Error");
       });
     });
+    } else {
+      this.toasterService.error("¡Campo vacio","Nombre del grupo vacio");
+    }
   }
   public CargarIteraciones(id:number){
    this.iteracionService.listarPorGrupoEvaluacion(id).subscribe(dato=>{
@@ -150,7 +154,12 @@ public AgregarIteracion(){
     public EliminarIteracion(id:number){
         this.iteracionService.eliminarPorId(id).subscribe(any =>{
           this.CargarIteraciones(this.grupoEvaluacion.cGrupoEvaluacion);
-        });
+          this.vOpciones=!this.vOpciones;
+            this.toasterService.warning("La iteración ha sido eliminada","Warning");
+        },
+          error => {
+            this.toasterService.error("No se pudo eliminar la iteración","Error");
+          });
     }
 
 
@@ -158,6 +167,7 @@ public AgregarIteracion(){
   public EditarIteracion(){
     this.iteracionService.editarIteracion(this.iteracionEditada).subscribe(any =>{
       this.CargarIteraciones(this.grupoEvaluacion.cGrupoEvaluacion);
+      this.vOpciones=!this.vOpciones;
       this.toasterService.success('¡Iteración editada!', 'Success');
     });
   }

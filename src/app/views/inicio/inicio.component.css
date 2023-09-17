@@ -202,7 +202,7 @@ width: 38.5vw;
   border: 2px solid #0097A2;
   background: #FFFEFE;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.20) inset;
-  height: 169px;
+  height: 220px;
   width: 165%;
   overflow-y: scroll;
   overflow-x: scroll;
@@ -242,7 +242,7 @@ h2{
   text-align: center;
 }
 #btn-crear-iteracion{
-  background: radial-gradient(2466.87% 67.10% at 42.41% 25.00%, rgba(0, 151, 162, 0.77) 0%, #0097A2 55.73%, rgba(0, 151, 162, 0.38) 100%);
+  background: radial-gradient(66% 396.1% at 26.41% 25%, rgba(0, 151, 162, 0.77) 0%, #0097A2 55.73%, rgba(0, 151, 162, 0.38) 100%);
   color: aliceblue;
   width: 160px;
   height: 85px;

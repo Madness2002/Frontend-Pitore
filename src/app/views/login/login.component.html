@@ -6,12 +6,12 @@
 
   <div class="input-box" style="margin-bottom: 30px;">
     <i id="logo-usuario"></i>
-    <input [(ngModel)] = "jwtRequest.username"  type="text" placeholder="Usuario">
+    <input [(ngModel)] = "jwtRequest.username"  [required]="true" type="text" placeholder="Usuario">
   </div>
 
   <div class="input-box">
     <i id="logo-contra"></i>
-    <input [(ngModel)] = "jwtRequest.password"type="password" placeholder="Contraseña">
+    <input [(ngModel)] = "jwtRequest.password" [required]="true" type="password" placeholder="Contraseña">
   </div>
 
 

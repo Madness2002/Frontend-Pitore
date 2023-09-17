@@ -15,7 +15,7 @@
           <p>Editar nombre</p>
         </div>
         <div class="filas">
-          <button (click)="EliminarGrupo()" class="ico_eli"></button>
+          <button data-bs-toggle="modal" data-bs-target="#form-eliminar-grupo"  class="ico_eli"></button>
           <p>Eliminar</p>
         </div>
       </div>
@@ -56,7 +56,7 @@
               <td *ngIf="iteracion.fRespondido">{{iteracion.pCalidad.toFixed(0)}}</td>
 
               <td *ngIf="!iteracion.fRespondido">Pendiente</td>
-              <td *ngIf="iteracion.fRespondido">Completado</td>
+              <td *ngIf="iteracion.fRespondido" style="color: #0097A2;">Completado</td>
 
               <td>  <button (click)=Validador();CargarIteracionEditada(iteracion.cIteracion) class="ico_3p"></button> <div class="opciones" *ngIf="GetValidador()==true"> <button data-bs-toggle="modal" data-bs-target="#form-editar-iteracion" class="ico_edit" ></button> <button class="ico_eli" (click)=EliminarIteracion(iteracion.cIteracion)></button> </div></td>
             </tr>
@@ -129,6 +129,23 @@
       </div>
       <div class="modal-footer" style="border: none;padding-top:40px; ">
         <button  class="btn-aceptar" style="margin-right: 20px;"  (click)="EditarGrupo()" data-bs-dismiss="modal">Continuar</button>
+        <button  class="btn-cancelar" data-bs-dismiss="modal">Cancelar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Eliminar Grupo de evaluacion-->
+<div *ngIf="grupoEvaluacion!=null" class="modal fade" id="form-eliminar-grupo" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content" >
+      <div class="modal-header" style="display: flex;flex-direction: column;align-items: start;border: none;padding-top: 30px;">
+        <h5 class="modal-title" >Eliminar {{grupoEvaluacion.nomGrupoEvaluacion}}</h5>
+        <p style="font-size: 14px;padding-top: 5px;font-style: normal;width: 62%;">Eliminará el grupo de forma permanente</p>
+      </div>
+      <div class="modal-footer" style="border: none;padding-top:40px; ">
+        <button  class="btn-aceptar" style="margin-right: 20px;background: radial-gradient(66% 396.1% at 26.41% 25%, rgba(255, 3, 3, 0.77) 0%, #FF1616 55.73%, rgba(255, 0, 0, 0.38) 100%);
+"  (click)="EliminarGrupo()" data-bs-dismiss="modal">Eliminar</button>
         <button  class="btn-cancelar" data-bs-dismiss="modal">Cancelar</button>
       </div>
     </div>

@@ -29,6 +29,7 @@ export class CuestionarioComponent implements OnInit{
               private userService: UserService,   private preguntaService: PreguntaService, public detallePreguntaService: DetallePreguntaService) {
   }
   ngOnInit(): void {
+   this.detallePreguntas=[] ;
     this.ObtenerGruposEvaluacion();
   this.ObtenerPreguntas();
 let id=numberAttribute(this._router.snapshot.paramMap.get('id'));
@@ -59,6 +60,8 @@ public TerminarCuestionario(){
        this.detallePreguntaService.InsertarDetallePregunta(pregunta).subscribe(eny=>{
        });
    })
+
+  this.detallePreguntas=[];
 this.IrA("resultado/"+this.iteracion.cIteracion);
 
 }

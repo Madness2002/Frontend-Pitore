@@ -8,13 +8,14 @@ import {Router} from "@angular/router";
 import {error} from "@angular/compiler-cli/src/transformers/util";
 import {GrupoEvaluacion} from "../../entities/GrupoEvaluacion/grupo-evaluacion";
 import {Iteracion} from "../../entities/Iteracion/iteracion";
+import {ToasterService} from "../toaster.service";
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
   public loginStatusSubjec = new Subject<boolean>();
 
-  constructor(public router: Router,private httpClient: HttpClient) { }
+  constructor(public router: Router,private httpClient: HttpClient,public toasterService: ToasterService) { }
 
   IrA(url:string): void{
 
@@ -24,6 +25,11 @@ export class UserService {
     user.dUsuario= new Date();
     user.imgUsuario="default.png"
     return this.httpClient.post(`${baseUrl}/usuarios/insert`,user);
+  }
+
+  public getUsuarioByUsername(username:string){
+return this.httpClient.get<Usuario>(`${baseUrl}/list/`+username);
+
   }
   public generarToken (user:JwtRequest){
 
@@ -37,12 +43,12 @@ export class UserService {
         this.getCurrentUser().subscribe((user:any) => {
 
           this.setUser(user);
-          console.log(user);
+        //  console.log(user);
         })
         if (this.getUserRole()=="USUARIO") this.IrA("/inicio")
       },(error) => {
-        console.log(error);
-        alert('Detalles inválidos , vuelva a intentar !!');
+        //console.log(error);
+        this.toasterService.error("¡Usuario o contraseña incorrecta!","Usuario invalido");
       }
     )
 

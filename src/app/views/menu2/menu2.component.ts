@@ -2,6 +2,7 @@ import {Component, EventEmitter, Output} from '@angular/core';
 import { Router } from '@angular/router';
 import {UserService} from "../../services/usuario/user.service";
 import {Iteracion} from "../../entities/Iteracion/iteracion";
+import {Usuario} from "../../entities/Usuario/usuario";
 
 @Component({
   selector: 'app-menu2',
@@ -13,8 +14,11 @@ export class Menu2Component {
 nombiteracionBuscar: EventEmitter<string>= new EventEmitter<string>();
 texto:string;
   vMenuUsuario?:boolean;
-
+  usuario:Usuario={} as Usuario;
   constructor(public router: Router,private userService:UserService) {
+this.userService.getCurrentUser().subscribe(dato=>{
+  this.usuario=dato;
+});
   }
 
   PropagarNombreIteracion(){

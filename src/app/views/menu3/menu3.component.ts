@@ -1,6 +1,7 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {Router} from "@angular/router";
 import {UserService} from "../../services/usuario/user.service";
+import {Usuario} from "../../entities/Usuario/usuario";
 @Component({
   selector: 'app-menu3',
   templateUrl: './menu3.component.html',
@@ -12,7 +13,11 @@ export class Menu3Component {
   vMenuUsuario?:boolean;
   @Input()
 indiceSend:number;
+  usuario:Usuario={} as Usuario;
   constructor(public router: Router,private userService:UserService) {
+    this.userService.getCurrentUser().subscribe(dato=>{
+      this.usuario=dato;
+    });
   }
   PropagarNombreIteracion(){
     this.vGoCuestionario.emit("prueba");
