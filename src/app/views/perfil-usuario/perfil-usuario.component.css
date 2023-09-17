@@ -1,0 +1,149 @@
+#main{
+  display: flex;
+  justify-content: center;
+padding-top: 65px;
+  padding-left: 50px;
+}
+#fila2-main{
+  padding-top: 40px;
+
+}
+#guardar-usuario{
+  flex-shrink: 0;
+  border-radius: 10px;
+  background: radial-gradient(2466.87% 67.10% at 42.41% 25.00%, rgba(0, 151, 162, 0.77) 0%, #0097A2 55.73%, rgba(0, 151, 162, 0.58) 100%);
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  display: flex;
+  justify-content: center;
+  border: none;
+  text-align: center;
+  align-items: center;
+  min-width: 154px;
+  font-size: 18px;
+  width: 29%;
+  height: 35px;
+  align-self: center;
+  transition: 1s;
+  color: white;
+}
+.btn-aceptar{
+  flex-shrink: 0;
+  border-radius: 10px;
+  background: radial-gradient(2466.87% 67.10% at 42.41% 25.00%, rgba(0, 151, 162, 0.77) 0%, #0097A2 55.73%, rgba(0, 151, 162, 0.58) 100%);
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  display: flex;
+  justify-content: center;
+  border: none;
+  text-align: center;
+  align-items: center;
+min-width: 154px;
+  font-size: 18px;
+  width: 29%;
+  height: 25px;
+  align-self: center;
+  transition: 1s;
+  color: white;
+}
+#fila1-main{
+
+
+}
+
+
+.btn-cancelar{
+  flex-shrink: 0;
+  border-radius: 5px;
+  background: radial-gradient(2466.87% 67.10% at 42.41% 25.00%, rgba(0, 151, 162, 0.23) 0%, rgba(0, 151, 162, 0.30) 55.73%, rgba(0, 151, 162, 0.11) 100%);
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  display: flex;
+  justify-content: center;
+  border: none;
+  text-align: center;
+  align-items: center;
+
+  font-size: 18px;
+  width: 28%;
+  height: 40px;
+  align-self: center;
+  transition: 1s;
+  color: #494949;
+}
+#logo-nombre{
+  background-image: url("~../../../img/logo_nombre.png");
+  width: 27px;
+  height: 24px;
+}
+
+#logo-usuario{
+  background-image: url("~../../../img/logo_usuario.png");
+  width: 27px;
+  height: 24px;
+}
+.logo-contra{
+  background-image: url("~../../../img/logo_contra.png");
+  width: 27px;
+  height: 24px;
+}
+.input-box{
+  transition: 0.3s;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  width: 32.5vw;
+  max-width: 50%;
+  min-width: 200px;
+  height: 36px;
+  margin-right: 100px;
+  border-radius: 5px;
+  border-bottom: 3px ridge #0097A2;
+  border-left: 1px ridge #0097A2;
+  border-right: 1px ridge #0097A2;
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.20);
+}
+
+.input-box input:focus {
+  outline: none;
+}
+.input-box input{
+  border: none;
+  margin-left:12px;
+  background-color: transparent;
+  width: 100%;
+  font-size: 14px;
+
+}
+
+#retroceder{
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  background: url("~../../../img/retroceder.png");
+  border: none;
+  background-size: 100%;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+#big-box{
+  border-radius: 5px;
+  border: 2px solid rgba(0, 151, 162, 0.30);
+  background: #FFFEFE;
+  height: 600px;
+  width: 60%;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.20) inset;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 30px;
+
+display: flex;
+  flex-direction: column;
+  justify-content: space-between
+}
+
+#fila3-main{
+
+  padding-bottom: 50px;
+  display: flex;
+  justify-content: flex-end;
+}
+

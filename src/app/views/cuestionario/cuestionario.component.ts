@@ -1,4 +1,4 @@
-import {Component, numberAttribute, OnInit} from '@angular/core';
+import {Component, numberAttribute, OnDestroy, OnInit} from '@angular/core';
 import {GrupoEvaluacion} from "../../entities/GrupoEvaluacion/grupo-evaluacion";
 import {Iteracion} from "../../entities/Iteracion/iteracion";
 import {Usuario} from "../../entities/Usuario/usuario";
@@ -15,7 +15,7 @@ import {DetallePreguntaService} from "../../services/detallePregunta/detalle-pre
   templateUrl: './cuestionario.component.html',
   styleUrls: ['./cuestionario.component.css']
 })
-export class CuestionarioComponent implements OnInit{
+export class CuestionarioComponent implements OnInit, OnDestroy{
   indiceSend:number=0;
   gruposEvaluacion: GrupoEvaluacion[];
  public iteracion: Iteracion={} as Iteracion;
@@ -29,7 +29,6 @@ export class CuestionarioComponent implements OnInit{
               private userService: UserService,   private preguntaService: PreguntaService, public detallePreguntaService: DetallePreguntaService) {
   }
   ngOnInit(): void {
-   this.detallePreguntas=[] ;
     this.ObtenerGruposEvaluacion();
   this.ObtenerPreguntas();
 let id=numberAttribute(this._router.snapshot.paramMap.get('id'));
@@ -39,6 +38,7 @@ let id=numberAttribute(this._router.snapshot.paramMap.get('id'));
 
   }
 private inicializarDetallePreguntas(){
+  this.detallePreguntas=[];
   this.preguntas.forEach(
     (pregunta) =>{
       this.detallePregunta = new DetallePregunta(this.iteracion,pregunta,0,new Date(),true) ;
@@ -60,10 +60,8 @@ public TerminarCuestionario(){
        this.detallePreguntaService.InsertarDetallePregunta(pregunta).subscribe(eny=>{
        });
    })
-
   this.detallePreguntas=[];
 this.IrA("resultado/"+this.iteracion.cIteracion);
-
 }
 
   IrA(url:string): void{
@@ -93,5 +91,9 @@ public Responder(respuesta: number){
       this.indicePregunta--;
     }
 
+  }
+
+  ngOnDestroy(): void {
+    this.detallePreguntas=[];
   }
 }

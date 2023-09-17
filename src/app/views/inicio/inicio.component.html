@@ -6,7 +6,7 @@
     <div id="box-nombre-grupo"><p *ngIf="grupoEvaluacion==null">Crea un grupo de evaluación</p>
       <div  style="display: flex;align-items: center; justify-content: space-around;" *ngIf="grupoEvaluacion!=null">  <p >{{grupoEvaluacion.nomGrupoEvaluacion}}</p>  <button (click)="ValidadorOpcionesGrupo()" class="ico_fecha_abajo"></button></div>
       <div *ngIf="GetValidadorOpcionesGrupo()" id="menu-perfil" >
-        <div class="filas">
+        <div *ngIf="false" class="filas">
           <button   class="ico_archivo"></button>
           <p>Archivos</p>
         </div>

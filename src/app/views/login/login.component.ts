@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { Router } from '@angular/router';
 import {UserService} from "../../services/usuario/user.service";
 import {JwtRequest} from "../../entities/Jwt/jwt-request";
@@ -9,7 +9,7 @@ import {ToasterService} from "../../services/toaster.service";
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit{
 
   jwtRequest: JwtRequest = {} as JwtRequest;
   constructor(public router: Router,private userService: UserService,public toasterService: ToasterService ) {
@@ -28,6 +28,9 @@ export class LoginComponent {
 
   }
 
-
+  ngOnInit(): void {
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
+  }
 
 }

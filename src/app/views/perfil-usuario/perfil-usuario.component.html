@@ -1,2 +1,77 @@
 <app-barra></app-barra>
 <app-menu4></app-menu4>
+
+<div id="main">
+
+  <div id="big-box">
+<div id="retroceder" (click)="IrA('/inicio')"></div>
+    <div style="display: flex;flex-direction: column; justify-content: space-between" >
+    <div id="fila1-main">
+      <div id="formulario">
+        <div class="input-box" style="margin-bottom: 30px; color: gray;">
+          <i id="logo-usuario"></i>
+          <input style="font-style: italic !important; color: gray;" [(ngModel)] = "usuario.username" type="text" [minlength]="5" [maxLength]="50"  disabled="true" placeholder="Usuario">
+        </div>
+        <div class="input-box" style="margin-bottom: 30px;">
+          <i id="logo-nombre"></i>
+          <input [(ngModel)] = "usuario.nomUsuario" type="text" [maxLength]="50" placeholder="Nombre">
+        </div>
+
+        <div class="input-box" style="margin-bottom: 30px;">
+          <i class="logo-contra"></i>
+          <input [(ngModel)] = "usuario.password" type="password" [maxLength]="50" placeholder="Contraseña">
+        </div>
+        <div class="input-box">
+          <i class="logo-contra"></i>
+          <input  [(ngModel)] = "usuario.confirmPassword" type="password" placeholder="Repetir contraseña" [maxLength]="50">
+        </div>
+
+      </div>
+<div id="foto"></div>
+    </div>
+    <div id="fila2-main">
+      <button data-bs-toggle="modal" data-bs-target="#form-eliminar-usuario"  class="btn-aceptar" style="margin-right: 20px;background: radial-gradient(66% 396.1% at 26.41% 25%, rgba(255, 3, 3, 0.77) 0%,
+      #FF1616 55.73%, rgba(255, 0, 0, 0.38) 100%)"> Eliminar cuenta</button>
+    </div>
+    </div>
+    <div id="fila3-main">
+      <button id="guardar-usuario" data-bs-toggle="modal" data-bs-target="#form-editar-usuario">Guardar</button>
+    </div>
+  </div>
+
+</div>
+
+<!-- Modal Eliminar Usuario-->
+<div *ngIf="usuario!=null" class="modal fade" id="form-eliminar-usuario" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content" >
+      <div class="modal-header" style="display: flex;flex-direction: column;align-items: start;border: none;padding-top: 30px;">
+        <h5 class="modal-title" >¿Estás seguro?</h5>
+        <p style="font-size: 14px;padding-top: 5px;font-style: normal;width: 62%;">Eliminará todos sus datos permanentemente</p>
+      </div>
+      <div class="modal-footer" style="border: none;padding-top:40px; ">
+        <button  class="btn-aceptar" style=" width: 28%;height: 40px; margin-right: 20px;background: radial-gradient(66% 396.1% at 26.41% 25%, rgba(255, 3, 3, 0.77) 0%, #FF1616 55.73%, rgba(255, 0, 0, 0.38) 100%);
+"  (click)="EliminarUsuario()" data-bs-dismiss="modal">Eliminar</button>
+        <button  class="btn-cancelar" data-bs-dismiss="modal">Cancelar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Modal Eliminar Usuario-->
+<div *ngIf="usuario!=null" class="modal fade" id="form-editar-usuario" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content" >
+      <div class="modal-header" style="display: flex;flex-direction: column;align-items: start;border: none;padding-top: 30px;">
+        <h5 class="modal-title" >¿Estás seguro?</h5>
+        <p style="font-size: 14px;padding-top: 5px;font-style: normal;width: 62%;">Sobrescribirá sus datos</p>
+      </div>
+      <div class="modal-footer" style="border: none;padding-top:40px; ">
+        <button  class="btn-aceptar" style=" width: 28%;height: 40px; margin-right: 20px;
+"  (click)="GuardarUsuario()" data-bs-dismiss="modal">Guardar</button>
+        <button  class="btn-cancelar" data-bs-dismiss="modal">Cancelar</button>
+      </div>
+    </div>
+  </div>
+</div>

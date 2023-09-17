@@ -30,10 +30,11 @@
 
     <div class="input-box" id="buscador">
       <i id="logo-porcentaje"></i>
-      <input  [(ngModel)]="detallePreguntas[indicePregunta].tRespuestaPregunta" type="text" placeholder="AUC - ROC">
+      <input  [(ngModel)]="detallePreguntas[indicePregunta].tRespuestaPregunta" type="number" [max]="100" placeholder="AUC - ROC">
     </div>
 
-    <button  class="btn-aceptar" data-bs-toggle="modal" data-bs-target="#form-terminar-iteracion">Terminar</button>
+    <button  *ngIf="!((detallePreguntas[indicePregunta].tRespuestaPregunta!=null)&&(detallePreguntas[indicePregunta].tRespuestaPregunta>=0&&(detallePreguntas[indicePregunta].tRespuestaPregunta<=100)))" class="btn-aceptar" data-bs-toggle="modal" data-bs-target="#form-terminar-iteracion" [disabled]="true" style="opacity: 0.7;">Terminar</button>
+    <button  *ngIf="(detallePreguntas[indicePregunta].tRespuestaPregunta!=null)&&(detallePreguntas[indicePregunta].tRespuestaPregunta>=0&&(detallePreguntas[indicePregunta].tRespuestaPregunta<=100))"  class="btn-aceptar" data-bs-toggle="modal" data-bs-target="#form-terminar-iteracion" >Terminar</button>
 
   </div>
 </div>

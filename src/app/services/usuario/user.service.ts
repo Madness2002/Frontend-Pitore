@@ -23,7 +23,7 @@ export class UserService {
   }
   public añadirUsuario(user:Usuario){
     user.dUsuario= new Date();
-    user.imgUsuario="default.png"
+    user.imgUsuario="logo_usuario.png"
     return this.httpClient.post(`${baseUrl}/usuarios/insert`,user);
   }
 
@@ -32,8 +32,22 @@ return this.httpClient.get<Usuario>(`${baseUrl}/list/`+username);
 
   }
   public generarToken (user:JwtRequest){
-
     return this.httpClient.post(`${baseUrl}/generate-token`,user);
+  }
+
+  public EliminarUsuario (user:Usuario){
+    return this.httpClient.delete(`${baseUrl}/usuarios/delete/`+user.cusuario);
+  }
+
+  public EditarUsuario (user:Usuario){
+    return this.httpClient.put(`${baseUrl}/usuarios/update/`+user.cusuario,{
+      username:user.username,
+      nomUsuario:user.nomUsuario,
+      password:user.password,
+      imgUsuario:user.imgUsuario,
+      dUsuario:user.dUsuario,
+      fUsuario:true
+    },{headers:{'Content-Type':'application/json'}});
   }
 
   public loginUsuario(jwtRequest: JwtRequest){
@@ -93,7 +107,6 @@ return JSON.parse(userStr);
    }
   }
   public getUserRole(){
-
       let user = this.getUser();
       return user.authorities[0].authority;
 

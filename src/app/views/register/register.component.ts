@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {UserService} from "../../services/usuario/user.service";
 import {Usuario} from "../../entities/Usuario/usuario";
 import {NgForm} from "@angular/forms";
@@ -10,12 +10,13 @@ import {ToasterService} from "../../services/toaster.service";
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
-export class RegisterComponent {
+export class RegisterComponent implements OnInit{
 usuario:Usuario = {} as Usuario;
   constructor(private userService:UserService,public toasterService: ToasterService) { }
 
   ngOnInit(): void {
-
+      localStorage.removeItem('token');
+      localStorage.removeItem('user');
   }
 
   formSubmit(){
@@ -41,7 +42,6 @@ else{
     if (this.usuario.password!=this.usuario.confirmPassword){
       this.toasterService.error("¡Asegúrese de escribir la misma contraseña en los 2 campos!","Contraseñas diferentes");
     }
-
     else {
       this.userService.añadirUsuario(this.usuario).subscribe(
         (data) => {
