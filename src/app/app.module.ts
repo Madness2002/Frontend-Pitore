@@ -20,6 +20,8 @@ import { BarraComponent } from './views/barra/barra/barra.component';
 import {NgChartsModule} from "ng2-charts";
 import { ToastrModule } from 'ngx-toastr';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import { PerfilUsuarioComponent } from './views/perfil-usuario/perfil-usuario.component';
+import { Menu4Component } from './views/menu4/menu4.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,9 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
     CuestionarioComponent,
     Menu3Component,
     ResultadoComponent,
-    BarraComponent
+    BarraComponent,
+    PerfilUsuarioComponent,
+    Menu4Component
   ],
   imports: [
     BrowserModule,

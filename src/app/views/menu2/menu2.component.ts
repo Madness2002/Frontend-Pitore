@@ -41,4 +41,5 @@ this.userService.getCurrentUser().subscribe(dato=>{
   CerrarSesion(){
     this.userService.cerrarSesion();
   }
+
 }
