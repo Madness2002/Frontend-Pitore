@@ -10,7 +10,7 @@
       <i id="logo-buscar"></i>
       <input  [(ngModel)] = "texto"  type="text" placeholder="Buscar iteración">
     </div>
-    <div *ngIf="usuario.imgUsuario=='logo_usuario.png'" class="cir-perfil" [style.background-image]="'url('+ usuario.imgUsuario + ')'" (click)=Validador()>
+    <div *ngIf="usuario.imgUsuario=='logo_usuario.png'" class="cir-perfil"  [style.background-image]="'url('+ usuario.imgUsuario + ')'" (click)=Validador()>
       <div *ngIf="GetValidador()"  class="menu-perfil">
         <div class="filas" (click)="IrA('/perfil')">
           <div *ngIf="usuario.imgUsuario=='logo_usuario.png'" [style.background-image]="'url(' + usuario.imgUsuario + ')'" class="logo_usuario"></div>

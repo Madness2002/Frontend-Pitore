@@ -18,6 +18,7 @@ texto:string;
   constructor(public router: Router,private userService:UserService) {
 this.userService.getCurrentUser().subscribe(dato=>{
   this.usuario=dato;
+  console.log(dato);
 });
   }
 
