@@ -22,6 +22,7 @@ import { ToastrModule } from 'ngx-toastr';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import { PerfilUsuarioComponent } from './views/perfil-usuario/perfil-usuario.component';
 import { Menu4Component } from './views/menu4/menu4.component';
+import {NgxUiLoaderHttpModule, NgxUiLoaderModule} from "ngx-ui-loader";
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { Menu4Component } from './views/menu4/menu4.component';
     FormsModule,
     NgChartsModule,
     ToastrModule.forRoot({}),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    NgxUiLoaderModule
   ],
   providers: [authInterceptorProviders],
   bootstrap: [AppComponent]
