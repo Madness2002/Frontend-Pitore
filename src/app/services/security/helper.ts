@@ -1,3 +1,3 @@
-let baseUrl ='http://localhost:8103'
+let baseUrl ='https://backend-pitore-production.up.railway.app'
 
 export default baseUrl;
