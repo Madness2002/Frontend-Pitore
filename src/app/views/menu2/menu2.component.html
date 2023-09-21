@@ -10,12 +10,17 @@
       <i id="logo-buscar"></i>
       <input  [(ngModel)] = "texto"  type="text" placeholder="Buscar iteración">
     </div>
-    <div *ngIf="usuario.imgUsuario=='logo_usuario.png'" class="cir-perfil"  [style.background-image]="'url('+ usuario.imgUsuario + ')'" (click)=Validador()>
+    <div *ngIf="usuario.imgUsuario=='logo_usuario.png'" class="cir-perfil"  id="burbu-perfil" (click)=Validador()>
       <div *ngIf="GetValidador()"  class="menu-perfil">
         <div class="filas" (click)="IrA('/perfil')">
-          <div *ngIf="usuario.imgUsuario=='logo_usuario.png'" [style.background-image]="'url(' + usuario.imgUsuario + ')'" class="logo_usuario"></div>
+          <div *ngIf="usuario.imgUsuario=='logo_usuario.png'"  class="logo_usuario"></div>
           <p>{{usuario.nomUsuario}}</p>
         </div>
+        <div class="filas">
+          <div  id="info"></div>
+          <a  href="https://drive.google.com/file/d/1AOh_WBeaXLkQJOiuFfstgEMxpyZtV4iB/view?usp=sharing" target="_blank">Información</a>
+        </div>
+
         <div class="filas">
           <div  id="salir"></div>
           <p (click)="CerrarSesion()">Cerrar sesión</p>

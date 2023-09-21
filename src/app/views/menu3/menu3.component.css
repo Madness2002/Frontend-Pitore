@@ -1,4 +1,12 @@
-
+#info{
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url("~../../../img/info.png");
+  background-size: 20px;
+}
 #nombre-cuestionario p{
   color: #000;
   text-align: center;
@@ -11,7 +19,9 @@
   margin: 0px;
 }
 
-
+#burbu-perfil{
+  background-image: url("~../../../img/logo_usuario.png");
+}
 
 #salir{
   border-radius: 50%;
@@ -28,7 +38,7 @@
   height: 40px;
   background-repeat: no-repeat;
   background-position: center;
-  background-image: url("~../../../img/buscar.png");
+  background-image: url("~../../../img/logo_usuario.png");
 }
 .filas{
   display: flex;

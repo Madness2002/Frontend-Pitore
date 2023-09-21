@@ -11,11 +11,15 @@
         <p *ngIf="indiceSend==30">Rendimiento</p>
         <p *ngIf="indiceSend>30">Resultados</p>
       </div>
-      <div *ngIf="usuario.imgUsuario=='logo_usuario.png'" [style.background-image]="'url('+ usuario.imgUsuario + ')'" id="burbu-perfil" class="cir-perfil" (click)=Validador()>
+      <div *ngIf="usuario.imgUsuario=='logo_usuario.png'"  id="burbu-perfil" class="cir-perfil" (click)=Validador()>
         <div *ngIf="GetValidador()" id="menu-perfil" >
           <div class="filas">
-            <div *ngIf="usuario.imgUsuario=='logo_usuario.png'" class="cir-perfil" [style.background-image]="'url('+ usuario.imgUsuario + ')'"  id="logo_usuario"></div>
+            <div *ngIf="usuario.imgUsuario=='logo_usuario.png'" class="cir-perfil"   id="logo_usuario"></div>
             <p>{{usuario.nomUsuario}}</p>
+          </div>
+          <div class="filas">
+            <div  id="info"></div>
+            <a  href="https://drive.google.com/file/d/1AOh_WBeaXLkQJOiuFfstgEMxpyZtV4iB/view?usp=sharing" target="_blank">Información</a>
           </div>
           <div class="filas">
             <div  id="salir"></div>
