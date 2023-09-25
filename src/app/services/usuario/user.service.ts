@@ -52,22 +52,18 @@ return this.httpClient.get<Usuario>(`${baseUrl}/list/`+username);
 
   public loginUsuario(jwtRequest: JwtRequest){
     this.generarToken(jwtRequest).subscribe(
-      (data:any) => {
-          localStorage.setItem('token',data.token);
+      (data) => {
+        // @ts-ignore
+        localStorage.setItem('token',data.token);
         this.getCurrentUser().subscribe((user:any) => {
-
           this.setUser(user);
-        //  console.log(user);
+          if (this.getUserRole()=="USUARIO") this.IrA("/inicio")
         })
-        if (this.getUserRole()=="USUARIO") this.IrA("/inicio")
       },(error) => {
-        //console.log(error);
+        console.log("ERROR EN LoginUsuario:"+error);
         this.toasterService.error("¡Usuario o contraseña incorrecta!","Usuario invalido");
       }
     )
-
-
-
   }
 
   public isLoggedIn(){
