@@ -1,2 +1,2 @@
-let baseUrl = import.meta.env.NG_APP_API;
+let baseUrl = "backend-pitore-production.up.railway.app";
 export default baseUrl;
